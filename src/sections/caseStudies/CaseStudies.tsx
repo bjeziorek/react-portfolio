@@ -25,19 +25,22 @@ export function CaseStudies() {
                             isExternal: true,
                             name: "universal.blog",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         },
                         {
                             isExternal: true,
                             name: "universal.github",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         },
                         {
                             isExternal: true,
                             name: "universal.npm",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         }
                     ]}
                 />
@@ -56,13 +59,15 @@ export function CaseStudies() {
                             isExternal: true,
                             name: "universal.blog",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         },
                         {
                             isExternal: true,
                             name: "universal.github",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         }
                     ]}
                 />
@@ -81,13 +86,15 @@ export function CaseStudies() {
                             isExternal: true,
                             name: "universal.blog",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         },
                         {
                             isExternal: true,
                             name: "universal.github",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         }
                     ]}
                 />
@@ -106,7 +113,8 @@ export function CaseStudies() {
                             isExternal: true,
                             name: "universal.blog",
                             linkURL: "",
-                            buttonVariant:"outline"
+                            buttonVariant:"outline",
+                            isIconBehind:true
                         }
                     ]}
                 />

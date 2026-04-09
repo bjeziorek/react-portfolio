@@ -7,7 +7,8 @@ interface Link {
     isExternal: boolean,
     name: string,
     linkURL: string,
-    buttonVariant:ButtonVariant
+    buttonVariant: ButtonVariant,
+    isIconBehind?: boolean
 }
 
 interface CaseStudyProps {
@@ -46,6 +47,7 @@ export function CaseStudy(props: CaseStudyProps) {
                                         label={t(link.name)}
                                         icon={link.isExternal ? <ExternalLink size={18} /> : null}
                                         buttonVariant={link.buttonVariant}
+                                        isIconBehind={link.isIconBehind}
                                     />
                                 )
                                 : (
@@ -54,6 +56,7 @@ export function CaseStudy(props: CaseStudyProps) {
                                         label={t(link.name)}
                                         icon={link.isExternal ? <ExternalLink size={18} /> : null}
                                         buttonVariant={link.buttonVariant}
+                                        isIconBehind={link.isIconBehind}
                                     />
                                 )
                         })}

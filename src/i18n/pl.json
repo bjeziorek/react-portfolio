@@ -8,7 +8,9 @@
     "description": "Opis",
     "blog": "Blog",
     "github": "GitHub",
-    "npm": "npm"
+    "npm": "npm",
+    "before": "Przed",
+    "after": "Po"
   },
   "caseStudy": {
     "seeCaseStudy": "Zobacz studium przypadku",
@@ -20,13 +22,13 @@
     "dx": "Dbałość o DX",
     "documenting": "Tworzenie dokumentacji",
     "patCardTitle": "Biblioteka tabel headless UI  opublikowana na npm",
-    "patCardDescription": "Probably‑A‑Table — moja własna biblioteka headless UI do tabel w React, zbudowana od zera, opublikowana na npm. Modularna, w pełni typowana, z customowymi hookami, paginacją, sortowaniem, drag‑and‑dropem i pełną dokumentacją.",
+    "patCardDescription": "Probably‑A‑Table — moja własna biblioteka headless UI do tabel w React, oparta na Radix-ie, opublikowana na npm. Modularna, w pełni typowana, z customowymi hookami, paginacją, sortowaniem, drag‑and‑dropem i pełną dokumentacją.",
     "refactor": "Refaktoryzacja i rozbicie monolitu",
     "tests": "Testy jednostkowe, integracyjne i RTL",
     "npmBundling": "Praca z bundlerami i publikacja na npm",
     "typeGenerics": "Tworzenie złożonych typów z generykami",
     "sudokuCardTitle": "Sudoku - generowanie planszy",
-    "sudokuCardDescription": "Zaprojektowałam i zaimplementowałam generator sudoku od zera, wykorzystując algorytmy backtrackingowe i podejście TDD. Cały proces — od pierwszego szkicu na kartce, przez pisanie testów, po refaktoryzację — nagrałam w formie 8‑godzinnego timelapse, z którego przygotowałam serię highlightów pokazujących realny proces myślenia i pracy. Projekt demonstruje, jak podchodzę do problemów algorytmicznych, jak projektuję API i jak iteruję.",
+    "sudokuCardDescription": "Zaprojektowałam i zaimplementowałam generator sudoku od zera, w duchu TDD. Cały proces — od pierwszego szkicu na kartce, przez pisanie testów, po refaktoryzację — nagrałam w formie 8‑godzinnego timelapse, z którego przygotowałam serię highlightów pokazujących realny proces myślenia i pracy. Projekt demonstruje, jak podchodzę do problemów algorytmicznych, jak projektuję API i jak iteruję.",
     "algorithms": "Myślenie algorytmiczne",
     "tdd": "Test Driven Development",
     "jiraEstimations": "Praca z Jirą i estymacje",
