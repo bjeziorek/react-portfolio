@@ -1,0 +1,92 @@
+{
+  "menu": {
+    "caseStudies": "Studia przypadków",
+    "video": "Studium przypadku: Sudoku (video)",
+    "pat": "Studium przypadku: Probably A Table (npm)"
+  },
+  "universal": {
+    "description": "Opis",
+    "blog": "Blog",
+    "github": "GitHub",
+    "npm": "npm"
+  },
+  "caseStudy": {
+    "seeCaseStudy": "Zobacz studium przypadku",
+    "skillsDemonstrated": "Zademonstrowane umiejetności",
+    "chaperoneCardTitle": "Chaperonowy CSS — R&D w legacy CRM",
+    "chaperoneCardDescription": "Jak zamieniłam chaos CSS w przewidywalny system przy pomocy „chaperonów” — inspiracja biochemią, wdrożona w Angularze, przenośna do Reacta.",
+    "systemThinking": "Myślenie systemowe",
+    "workWithLegacy": "Praca z kodem legacy",
+    "dx": "Dbałość o DX",
+    "documenting": "Tworzenie dokumentacji",
+    "patCardTitle": "Biblioteka tabel headless UI  opublikowana na npm",
+    "patCardDescription": "Probably‑A‑Table — moja własna biblioteka headless UI do tabel w React, zbudowana od zera, opublikowana na npm. Modularna, w pełni typowana, z customowymi hookami, paginacją, sortowaniem, drag‑and‑dropem i pełną dokumentacją.",
+    "refactor": "Refaktoryzacja i rozbicie monolitu",
+    "tests": "Testy jednostkowe, integracyjne i RTL",
+    "npmBundling": "Praca z bundlerami i publikacja na npm",
+    "typeGenerics": "Tworzenie złożonych typów z generykami",
+    "sudokuCardTitle": "Sudoku - generowanie planszy",
+    "sudokuCardDescription": "Zaprojektowałam i zaimplementowałam generator sudoku od zera, wykorzystując algorytmy backtrackingowe i podejście TDD. Cały proces — od pierwszego szkicu na kartce, przez pisanie testów, po refaktoryzację — nagrałam w formie 8‑godzinnego timelapse, z którego przygotowałam serię highlightów pokazujących realny proces myślenia i pracy. Projekt demonstruje, jak podchodzę do problemów algorytmicznych, jak projektuję API i jak iteruję.",
+    "algorithms": "Myślenie algorytmiczne",
+    "tdd": "Test Driven Development",
+    "jiraEstimations": "Praca z Jirą i estymacje",
+    "fromScratch": "Tworzenie projektu od zera",
+    "mlopsCardTitle": "Fullstackowy system do eksperymentów z modelami ML",
+    "mlopsCardDescription": "Interaktywny system do eksperymentów z modelami ML (GPT‑2), zbudowany jako rozproszona architektura: Node.js API Gateway + mikroserwisy w Pythonie + frontend w React + animacje w Framer Motion. Projekt pokazuje integrację ML, architekturę mikroserwisową i nowoczesny React.",
+    "backendAsync": "Obsługa asynchroniczności w UI (polling, retry, fallback UI)",
+    "uiAnimations": "Animacje i UX (Framer Motion + Radix UI + Tailwind)",
+    "stateManaging": "Zaawansowane zarządzanie stanem (Context, custom hooks, separacja logiki od UI)",
+    "backendIntegration": "Integracja z realnym backendem (API Gateway, WebSockety, mocki)",
+    "pat":""
+  },
+  "dashboard": {
+    "title": "Panel główny"
+  },
+  "sidebar": {
+    "sandbox": "Piaskownica UI",
+    "health": "Stan serwera",
+    "nn": "Sieci neuronowe",
+    "llm": "Modele językowe",
+    "models": "Modele"
+  },
+  "topbar": {
+    "language": "Język",
+    "online": "Połączono z serwerm",
+    "offline": "Rozłączono z serwerem",
+    "connecting": "Trwa łączenie...",
+    "connection": "Połączenie z serwerem",
+    "connect": "Połącz",
+    "disconnect": "Rozłącz",
+    "connectionError": "Nie udało się połączyć z serwerem. Wyłączono tryb online.",
+    "switch": "Przełącz język"
+  },
+  "sandbox": {
+    "title": "Piaskownica do zabaw",
+    "info": "Tu możesz wrzucać swoje eksperymenty UI, animacje, Radix, Framer Motion, testy layoutów, komponenty, prototypy itd.",
+    "placeholder": "Wrzucaj tu swoje komponenty testowe…"
+  },
+  "models": {
+    "models": "Modele",
+    "columns": "Kolumny",
+    "searchSimplePlaceholder": "Szukaj w modelach...",
+    "advancedFiltering": "Zaawansowane filtrowanie",
+    "reset": "Wyczyść",
+    "description": "Opis",
+    "name": "Nazwa",
+    "base": "Podstawa",
+    "version": "Wersja",
+    "lora": "LoRA",
+    "status": "Status",
+    "id": "ID",
+    "type": "Typ",
+    "tags": "Tagi",
+    "size": "Rozmiar",
+    "details": "Szczegóły",
+    "load": "Załaduj",
+    "actions": "Akcje"
+  },
+  "table": {
+    "tableMenu": "Menu Tabeli",
+    "simpleSearch": "Proste Wyszukiwanie"
+  }
+}
