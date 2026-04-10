@@ -15,12 +15,13 @@ interface CaseStudyProps {
     title: string,
     description: string,
     skills: string[],
-    links: Link[]
+    links: Link[],
+    techStack:string[]
 }
 
 export function CaseStudy(props: CaseStudyProps) {
     const { t } = useTranslation();
-    const { title, description, skills, links } = props;
+    const { title, description, skills, links, techStack } = props;
 
     return (
         <Card>
@@ -34,6 +35,16 @@ export function CaseStudy(props: CaseStudyProps) {
                             {skills.map(skill => (
                                 <li>
                                     <Text>{t(skill)}</Text>
+                                </li>
+                            ))}
+                        </ul>
+                    </Box>
+                    <Box>
+                        <Text>{t('universal.techStack')}</Text>
+                        <ul>
+                            {techStack.map(tech => (
+                                <li>
+                                    <Text>{tech}</Text>
                                 </li>
                             ))}
                         </ul>
