@@ -1,127 +1,190 @@
 import { Card, Text, Heading, Flex } from "@radix-ui/themes";
-import { t } from "i18next";
 import { Video } from "../shared/Video";
 import { ExternalLink } from "lucide-react";
 import { SidebarNavItem } from "../navigation/SidebarNavItem";
+import { useTranslation } from "react-i18next";
 
 export function VideoCaseStudy() {
+    const { t } = useTranslation()
 
     return (
-        <>
-            <Card>
-                <Flex direction="column" gap="4">
-                    <Heading size="6">Sudoku case study</Heading>
+        <Card>
+            <Flex direction="column" gap="4">
+                <Heading size="6">{t('sudoku.title')}</Heading>
 
-                    <Text>This case study shows my real TDD process while building a Sudoku board generator — recorded as an 8 hour timelapse and presented here as short highlights.</Text>
+                <Text>{t('sudoku.intro1')}</Text>
+                <Text>{t('sudoku.intro2')}</Text>
+                <Heading size="4">{t('sudoku.h_plan')}</Heading>
+                <Text>{t('sudoku.plan1')}</Text>
+                <Flex gap="4" align="center">
+                    <Text>{t('universal.plan')}</Text>
 
-                    <Heading size="4">Planning & estimation</Heading>
 
-                    <Flex gap="4" align="center">
-                        <Text>
-                            Here you can see how I plan the project on piece of paper (timelapse speeded up x6):
-                        </Text>
-                        <SidebarNavItem
-                            to="https://youtu.be/TZ2YIjxjXcg"
-                            label={t('universal.youtube')}
-                            icon={<ExternalLink size={18} />}
-                            buttonVariant="outline"
-                            isIconBehind={true}
-                        />
-                    </Flex>
-
-                    <Flex gap="4" align="center">
-                        <Text>
-                            And here you can see how I fill Jira and how I estimate tasks (timelapse speeded up 6x):</Text>
-                        <SidebarNavItem
-                            to="https://youtu.be/yAgob3irRbk"
-                            label={t('universal.youtube')}
-                            icon={<ExternalLink size={18} />}
-                            buttonVariant="outline"
-                            isIconBehind={true}
-                        />
-                    </Flex>
-
-                    <Heading size="4">Pierwszy krok TDD: rowCheck</Heading>
-                    <Text>
-                        I start from making rowCheck, as it’s the easiest of all checks – just checking if the row is correct: had 9 unique digits.
-                    </Text>
-                    <Text>I write rowCheck taking as argument row of type number[] and for now doing nothing (as I do it in TDD style) and just returning false.</Text>
-                    <Text> Then I create test expecting false for [1,1,2,3,4,5,6,7,8] – double “1” are unacceptable – and expecting true for [1,2,3,4,5,6,7,8,9].</Text>
-                    <Text>  I also wanted to make a test checking if all elements are numbers but types doesn’t allow to feed the function with something what is not a number.</Text>
-                    <Text>Strong types cut a lot of testing edge cases so tests are much quicker and easier.</Text>
-                    <Video
-                        title={"rowCheck"}
-                        url={"https://www.youtube.com/embed/Z_uvgwrmnpM"}
-                    />
-                    <Heading size="4">Dwie wersje rowCheck</Heading>
-                    <Text>
-                        But in that moment I realized that I will need rowCheck for checking generated board, but I’ll also need a rowCheck for player, when such function will need to accept empty fields to let the player know he misses something. So I’ll need 2 versions. I added to Jira player’s version to not forget about it and also decided to add JSDocs annotation to both functions to know what’s they are for and how to use them, just in case. Not it looks obvious but… it’s better to have JSDocs.
-                    </Text>
-                      <Video
-                        title={"rowCheck"}
-                        url={"https://www.youtube.com/embed/xI1I1bAxcQE"}
-                    />
-
-                    <Heading size="4">Implementacja rowCheck</Heading>
-                    <Text> Now I write rowCheck body, where I filter row for each ad check if result’s length is exactly 1.
-                    </Text>
-                     <Video
-                        title={"rowCheck"}
-                        url={"https://www.youtube.com/embed/it_YCPOTw8A"}
-                    />
-
-                    <Heading size="4">Architecture change</Heading>
-
-                    <Text>
-                        In that moment I realized that columnCheck and subSquare check also can be checked in this way, so instead of writing something similar 3 times I decided to make universal array checker plus data extractors instead of full checking functions. So I renamed rowCheck to arrayCheck, updated JSDocs.
-                    </Text>
-                     <Video
-                        title={"rowCheck"}
-                        url={"https://www.youtube.com/embed/Tr63YN1mnGg"}
-                    />
-
-                    <Heading size="4"> Column extractor test and custom types</Heading>
-                    <Text>
-                        I again start from test expecting array made from column. In this moment I decide to create custom types because I prefer having types guarding that array elements can be only between 1 and 9 instead predicting all edge cases and developer / user creativity.
-                    </Text>
-                     <Video
-                        title={"rowCheck"}
-                        url={"https://www.youtube.com/embed/_SFri3_WlRk"}
-                    />
-
-                    <Heading size="4"> Column extractor function and one more type</Heading>
-
-                    <Text>tooooooooooooooodoooooooooooo</Text>
-
-                    <Heading size="4">Summary</Heading>
-                    <Text>
-                        This project demonstrates my real TDD workflow, architectural thinking, and ability to design clean, typed APIs for algorithmic problems.
-                    </Text>
-                    <Text>
-                        And here is full timelapse with speed x10 from this part of work:
-                    </Text>
-                    <Flex gap="4" align="center">
-                        <Text>Part 1:</Text> <SidebarNavItem
-                            to="https://youtu.be/FTf-m9J2W0g"
-                            label={t('universal.youtube')}
-                            icon={<ExternalLink size={18} />}
-                            buttonVariant="outline"
-                            isIconBehind={true}
-                        />
-                    </Flex>
-
-                    <Flex gap="4" align="center"> <Text>Part 2:</Text> <SidebarNavItem
-                        to="https://youtu.be/0e4PROt-AtE"
+                    <SidebarNavItem
+                        to="https://youtu.be/TZ2YIjxjXcg"
                         label={t('universal.youtube')}
                         icon={<ExternalLink size={18} />}
                         buttonVariant="outline"
                         isIconBehind={true}
                     />
-                    </Flex>
-                    <Text>On the beginning I was really stressed that I’m recorded and I did a few stupid things (but quickly corrected them), then I got accustomed to being recorded and work went smooth in further part of recording. It also shows that it’s not polished hightlights made for portfolio case but fragments of real long process you can see in full context.
-                    </Text>
                 </Flex>
-            </Card>
-        </>
+                <Text>{t('sudoku.plan2')}</Text>
+
+                <Flex gap="4" align="center">
+                    <Text>{t('universal.jira')}</Text>
+                    <SidebarNavItem
+                        to="https://youtu.be/yAgob3irRbk"
+                        label={t('universal.youtube')}
+                        icon={<ExternalLink size={18} />}
+                        buttonVariant="outline"
+                        isIconBehind={true}
+                    />
+                </Flex>
+
+
+                <Heading size="4">{t('sudoku.h_rowCheck')}</Heading>
+                <Text>{t('sudoku.rowCheck1')}</Text>
+                <ul>
+                    <li>{t('sudoku.list_rowCheck1')}</li>
+                    <li>{t('sudoku.list_rowCheck2')}</li>
+                    <ul>
+                        <li>{t('sudoku.subList_RowCheck1')}</li>
+                        <li>{t('sudoku.subList_RowCheck2')}</li>
+                    </ul>
+                </ul>
+                <Text>{t('sudoku.rowCheck2')}</Text>
+                <Text>{t('sudoku.rowCheck3')}</Text>
+
+                <Video
+                    title={"rowCheck"}
+                    url={"https://www.youtube.com/embed/Z_uvgwrmnpM"}
+                />
+                <Heading size="4">{t('sudoku.h_twoVersions')}</Heading>
+                <Text>{t('sudoku.twoVersions1')}</Text>
+                <ul>
+                    <li>{t('sudoku.list_twoVersions1')}</li>
+                    <li>{t('sudoku.list_twoVersions2')}</li>
+                </ul>
+                <Text>{t('sudoku.twoVersions2')}</Text>
+
+                <Video
+                    title={"rowCheck"}
+                    url={"https://www.youtube.com/embed/xI1I1bAxcQE"}
+                />
+
+                <Heading size="4">{t('sudoku.h_implementation')}</Heading>
+                <Text>{t('sudoku.implementation1')}</Text>
+                <Text>{t('sudoku.implementation2')}
+                </Text>
+                <Video
+                    title={"rowCheck"}
+                    url={"https://www.youtube.com/embed/it_YCPOTw8A"}
+                />
+
+                <Heading size="4">{t('sudoku.h_architecture')}</Heading>
+
+                <Text>{t('sudoku.architecture1')}</Text>
+
+                <ul>
+                    <li>{t('sudoku.list1_architecture')}</li>
+                    <li>{t('sudoku.list2_architecture')}</li>
+                </ul>
+                <Text>{t('sudoku.architecture2')}</Text>
+                <ul>
+                    <li>{t('sudoku.list3_architecture')}</li>
+                    <li>{t('sudoku.list4_architecture')}</li>
+                </ul>
+                <Text>{t('sudoku.architecture3')}</Text>
+
+                <Video
+                    title={"rowCheck"}
+                    url={"https://www.youtube.com/embed/Tr63YN1mnGg"}
+                />
+
+                <Heading size="4">{t('sudoku.h_colExtractor')}</Heading>
+
+                <Text>{t('sudoku.colExtractor1')}</Text>
+                <Text>{t('sudoku.colExtractor2')}</Text>
+
+                <ul>
+                    <li>{t('sudoku.list1_colExtractor')}</li>
+                    <li>{t('sudoku.list2_colExtractor')}</li>
+                    <li>{t('sudoku.list3_colExtractor')}</li>
+                </ul>
+                <Text>{t('sudoku.colExtractor3')}</Text>
+                <Video
+                    title={"rowCheck"}
+                    url={"https://www.youtube.com/embed/_SFri3_WlRk"}
+                />
+                <Heading size="4">{t('sudoku.h_subsquares')}</Heading>
+
+                <Text>{t('sudoku.subsquares1')}</Text>
+                <Text>{t('sudoku.subsquares2')}</Text>
+
+                <Video
+                    title={"rowCheck"}
+                    url={"6"}
+                />
+                <Heading size="4">{t('sudoku.h_subsquaresTests')}</Heading>
+
+                <Text>{t('sudoku.subsquaresTests1')}</Text>
+                <Text>{t('sudoku.subsquaresTests2')}</Text>
+
+                <Video
+                    title={"rowCheck"}
+                    url={"7"}
+                />
+                <Heading size="4">{t('sudoku.h_debugging')}</Heading>
+
+                <Text>{t('sudoku.debugging1')}</Text>
+                <Text>{t('sudoku.debugging2')}</Text>
+                <ul>
+                    <li>{t('sudoku.list1_debugging')}</li>
+                    <li>{t('sudoku.list2_debugging')}</li>
+                    <li>{t('sudoku.list3_debugging')}</li>
+                </ul>
+
+                <Text>{t('sudoku.debugging3')}</Text>
+                <Video
+                    title={"rowCheck"}
+                    url={"8"}
+                />
+                <Heading size="4">{t('sudoku.h_summary')}</Heading>
+
+                <Text>{t('sudoku.summary1')}</Text>
+                <ul>
+                    <li>{t('sudoku.list1_summary')}</li>
+                    <li>{t('sudoku.list2_summary')}</li>
+                    <li>{t('sudoku.list3_summary')}</li>
+                    <li>{t('sudoku.list4_summary')}</li>
+                    <li>{t('sudoku.list5_summary')}</li>
+                    <li>{t('sudoku.list6_summary')}</li>
+                </ul>
+
+                <Text>{t('sudoku.summary2')}</Text>
+
+
+                <Flex gap="4" align="center">
+                    <Text>{t('universal.part')} 1:</Text> <SidebarNavItem
+                        to="https://youtu.be/FTf-m9J2W0g"
+                        label={t('universal.youtube')}
+                        icon={<ExternalLink size={18} />}
+                        buttonVariant="outline"
+                        isIconBehind={true}
+                    />
+                </Flex>
+
+                <Flex gap="4" align="center"> <Text>{t('universal.part')} 2:</Text> <SidebarNavItem
+                    to="https://youtu.be/0e4PROt-AtE"
+                    label={t('universal.youtube')}
+                    icon={<ExternalLink size={18} />}
+                    buttonVariant="outline"
+                    isIconBehind={true}
+                />
+                </Flex>
+                <Text>{t('sudoku.summary3')}</Text>
+                <Text>{t('sudoku.summary4')}</Text>
+            </Flex>
+        </Card>
     );
 }

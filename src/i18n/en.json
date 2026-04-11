@@ -4,6 +4,82 @@
     "video":"Sudoku Case Study (video)",
     "pat": "Probably A Table npm Case Study"
   },
+  
+  "sudoku": {
+    "title": "Sudoku Board Generator (TDD, typing, architecture)",
+    "intro1": "This case study presents my real TDD workflow while building a Sudoku board generator.",
+    "intro2": "The entire process was recorded as an 8‑hour timelapse. Below I highlight the most important fragments — the ones that best show how I think, design, and iterate.",
+    
+    "h_plan": "Planning and estimation",
+    "plan1": "I start with an analog sketch — outlining the structure of the problem, dependencies, and first ideas for the API. This helps me set priorities and break the work into small, testable steps.",
+    "plan2": "Then I move everything into Jira, where I create tasks and estimate them. This keeps the workflow organized and gives me a clear picture of what I’m doing and why.",
+    
+    "h_rowCheck": "First TDD step: rowCheck",
+    "rowCheck1": "I begin with the simplest element — a function that validates a Sudoku row. Following TDD principles:",
+    "list_rowCheck1": "I create a function rowCheck(row: number[]) that initially just returns false",
+    "list_rowCheck2": "I write tests:",
+    "subList_RowCheck1": "false for [1,1,2,3,4,5,6,7,8] (duplicate),",
+    "subList_RowCheck2": "true for [1,2,3,4,5,6,7,8,9].",
+    "rowCheck2": "I also considered testing non‑numeric values, but strong typing prevents such cases at compile time.",
+    "rowCheck3": "This is a great example of how types reduce the number of tests and speed up development.",
+    
+    "h_twoVersions": "Two versions of rowCheck",
+    "twoVersions1": "During development I realize I need two variants:",
+    "list_twoVersions1": "rowCheck for the generator — it must require complete data (1–9).",
+    "list_twoVersions2": "rowCheck for the player — it must accept empty fields.",
+    "twoVersions2": "I add a separate Jira task to keep track of this and update the JSDocs to clearly describe the purpose of both functions.",
+    
+    "h_implementation": "Implementing rowCheck",
+    "implementation1": "I implement the logic: filtering elements and checking whether each appears exactly once.",
+    "implementation2": "A simple, clean function that is easy to test.",
+    
+    "h_architecture": "Architecture change: arrayCheck + extractors",
+    "architecture1": "At this point I notice that I will need similar logic for:",
+    "list1_architecture": "columns (columnCheck),",
+    "list2_architecture": "sub‑squares (subSquareCheck).",
+    "architecture2": "Instead of duplicating code, I refactor the architecture:",
+    "list3_architecture": "rowCheck → arrayCheck (a generic function),",
+    "list4_architecture": "separate data extractors for rows, columns, and sub‑squares.",
+    "architecture3": "This reduces complexity and makes testing easier.",
+    
+    "h_colExtractor": "Column extractor tests and domain types",
+    "colExtractor1": "I start with a test: I expect the column extractor to return the correct array.",
+    "colExtractor2": "At this point I introduce domain‑specific types, such as Digit1to9, to:",
+    "list1_colExtractor": "limit the range of allowed values,",
+    "list2_colExtractor": "eliminate entire classes of bugs,",
+    "list3_colExtractor": "simplify tests.",
+    "colExtractor3": "Types become guardians of correctness.",
+    
+    "h_subsquares": "Sub‑square extraction",
+    "subsquares1": "I write an initial draft of the sub‑square extractor — here I start with implementation, because it’s difficult to write a meaningful test without a minimal outline of the logic.",
+    "subsquares2": "Tests later stabilize the function and help refine the details.",
+    
+    "h_subsquaresTests": "Sub‑square extractor tests",
+    "subsquaresTests1": "I create tests that verify whether the extractor returns correct 9‑element arrays.",
+    "subsquaresTests2": "This ensures that the slicing logic works as intended.",
+    
+    "h_debugging": "Debugging with the help of tests",
+    "debugging1": "A test that should pass unexpectedly fails.",
+    "debugging2": "I begin debugging — and here tests prove invaluable:",
+    "list1_debugging": "I discover the function returns void (I forgot the return statement),",
+    "list2_debugging": "after fixing that, the test still fails — the function returns a 3‑element array instead of a 9‑element one,",
+    "list3_debugging": "tests and console.logs lead me directly to incorrect slicing ranges.",
+    "debugging3": "This is a great example of how TDD + types let me focus on architecture and logic instead of remembering every detail.",
+    
+    "h_summary": "Summary",
+    "summary1": "This project demonstrates:",
+    "list1_summary": "my real TDD workflow,",
+    "list2_summary": "architectural thinking and refactoring during development,",
+    "list3_summary": "designing clean, typed APIs,",
+    "list4_summary": "working with algorithms and structured data,",
+    "list5_summary": "debugging supported by tests,",
+    "list6_summary": "iteration and deliberate technical decision‑making.",
+    "summary2": "These are not polished portfolio snippets — this is the actual process, visible in full context.",
+    "summary3": "At the beginning I was stressed by the recording and made a few silly mistakes (quickly corrected), but later the work went smoothly.",
+    "summary4": "The timelapse shows what a real, long development process looks like — not just curated highlights."
+  },
+
+
   "dashboard": {
     "title": "Dashboard"
   },
