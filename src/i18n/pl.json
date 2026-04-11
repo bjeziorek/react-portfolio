@@ -12,7 +12,9 @@
     "before": "Przed",
     "after": "Po",
     "youtube":"YouTube",
-    "techStack":"Technologie"
+    "techStack":"Technologie",
+    "code":"Kod",
+    "test":"Test"
   },
   "caseStudy": {
     "projectsDescription":"Wybrane projekty, z których każdy reprezentuje inną umiejętność — od architektury Reacta i pracy z asynchronicznością, przez algorytmikę, TDD i rozwiązywanie złożonych problemów, po migracje dużych systemów produkcyjnych i dowożenie projektów end‑to‑end. Wybrałam je z wielu innych, tak aby razem tworzyły pełny obraz mojego doświadczenia: zarówno technicznego, jak i projektowego, produktowego oraz R&D.",

@@ -24,7 +24,7 @@ export function CaseStudies() {
                     title={"caseStudy.patCardTitle"}
                     description={"caseStudy.patCardDescription"}
                     skills={["caseStudy.refactor", "caseStudy.tests", "caseStudy.npmBundling", "caseStudy.typeGenerics"]}
-                    techStack={["React 18", "tsup", "Vite", "Vitest", "RTL", "Radix"]}
+                    techStack={["React 19", "tsup", "Vite", "Vitest", "RTL", "Radix"]}
                     links={[
                         {
                             isExternal: false,
@@ -59,7 +59,7 @@ export function CaseStudies() {
                     title={"caseStudy.mlopsCardTitle"}
                     description={"caseStudy.mlopsCardDescription"}
                     skills={["caseStudy.backendAsync", "caseStudy.uiAnimations", "caseStudy.stateManaging", "caseStudy.backendIntegration"]}
-                    techStack={["React 18", "Flask microservices", "Node.js API Gateway", "Radix", "Framer Motion", "Machine Learning", "Vitest", "RTL", "i18n"]}
+                    techStack={["React 19", "Flask microservices", "Node.js API Gateway", "Radix", "Framer Motion", "Machine Learning", "Vitest", "RTL", "i18n"]}
                     links={[
                         {
                             isExternal: true,
@@ -125,7 +125,7 @@ export function CaseStudies() {
                     title={"caseStudy.sudokuCardTitle"}
                     description={"caseStudy.sudokuCardDescription"}
                     skills={["caseStudy.algorithms", "caseStudy.tdd", "caseStudy.jiraEstimations", "caseStudy.fromScratch"]}
-                    techStack={["React 18", "Radix", "Vitest"]}
+                    techStack={["React 19", "Radix", "Vitest"]}
                     links={[
                         {
                             isExternal: false,

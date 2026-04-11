@@ -1,5 +1,7 @@
 import { Card, Heading, Text } from "@radix-ui/themes";
 import { BeforeAfter } from "../../shared/BeforeAfter";
+import { CodeBlock } from "../../shared/CodeBlock";
+import { CodeTest } from "../../shared/CodeTest";
 
 const before1 =
   `import { Badge, Button, Card, DropdownMenu, Flex, Select, Spinner, Table, Text, TextField, Tooltip } from "@radix-ui/themes";
@@ -551,49 +553,83 @@ const handleDrop = (targetKey) => {
 `
 
 const after1 =
-  `import { Table } from "@radix-ui/themes";
-import { TableBody } from "./components/TableBody";
-import { TableHeader } from "./components/TableHeader";
-import type { TableColumnsColumns } from "../../types/columns";
-import type { TableData } from "../../types/data";
-import type { TableSortSort, TableSortToggleSort } from "../../types/sort";
-import type { TableDragHandleDrop, TableDragSetDragged } from "../../types/drag";
+  `import { Card } from "@radix-ui/themes";
+import { useRef, useState } from "react";
+import { useSort } from "../hooks/useSort/useSort";
+import { useFilter } from "../hooks/useFilter/useFilter";
+import { usePagination } from "../hooks/usePagination/usePagination";
+import { useColumns } from "../hooks/useColumns/useColumns";
+import { SimpleSearch } from "../components/SimpleSearch";
+import { TableMenu } from "../components/TableMenu";
+import { TableFull } from "../components/table/TableFull";
+import type { TableData } from "../types/data";
+import type { TableFiltersFilters } from "../types/filters";
+import type { TableColumnsColumns } from "../types/columns";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
+import { type TablePaginationPageSizeConfig } from "../types";
+import { defaultPaginationConfig } from "../defaultConfigs/defaultPaginationConfig";
+import { defaultTranslations } from "../components/translations/defaultTranslations";
+import { v4 as uuid } from "uuid"
+import { TableContext } from "../providers/TableProvider";
 
-interface TableFullProps<Data extends { id: string | number; }> {
+interface ProbablyATableProps<Data extends { id: string | number; }, Filters> {
     columns: TableColumnsColumns<Data>,
-    setDragged: TableDragSetDragged,
-    handleDrop: TableDragHandleDrop,
-    toggleSort: TableSortToggleSort<Data>,
-    sort: TableSortSort<Data>,
-    paginated: TableData<Data>
+    data: TableData<Data>,
+    filters: TableFiltersFilters<Filters>,
+    defaultFilters: TableFiltersFilters<Filters>,
+    paginationConfig?: TablePaginationPageSizeConfig
 }
 
-export function TableFull<Data extends { id: string | number; }>(props: TableFullProps<Data>) {
+export default function ProbablyATable<Data extends { id: string | number; }, Filters>(props: ProbablyATableProps<Data, Filters>) {
+
+    // PROPS
     const {
-        columns,
-        setDragged,
-        handleDrop,
-        toggleSort,
-        sort,
-        paginated
+        columns: propCols,
+        data: propData,
+        filters: propFilters,
+        defaultFilters,
+        paginationConfig = defaultPaginationConfig
     } = props;
 
+    // STATES
+    const [search, setSearch] = useState("");
+    // const [open, setOpen] = useState(false);
+
+    // CONSTS
+    const debouncedSearch = useDebouncedValue(search, 300);
+    const tableUUID = useRef(uuid())
+
+    // HOOKS
+    const { filtered } = useFilter<Data, Filters>(propData, debouncedSearch, propFilters, defaultFilters);
+    const { sortedData, sort, toggleSort } = useSort(filtered)
+    const { paginated,
+        page,
+        setPage,
+        totalPages,
+        pageSize,
+        setPageSize } = usePagination(sortedData, paginationConfig.defaultPageSize)
+    const { toggleColumn,
+        columns,
+        handleDrop,
+        setDragged } = useColumns(propCols)
+
     return (
-        <Table.Root>
-            <TableHeader
-                setDragged={setDragged}
-                handleDrop={handleDrop}
-                columns={columns}
-                toggleSort={toggleSort}
-                sort={sort}
-            />
-            <TableBody
-                paginated={paginated}
-                columns={columns}
-            />
-        </Table.Root>
-    )
+         <TableContext.Provider value={{ tableUUID: tableUUID.current }}>
+            <h2 className='sr-only'>{defaultTranslations.tableSR}</h2>
+            <Card>
+                <SimpleSearch search={search} setSearch={setSearch}></SimpleSearch>
+                {/* <Filters open={open} setOpen={setOpen} isPending={isPending} filters={filters} setFilters={setFilters} handleReset={handleReset} ></Filters> */}
+            </Card>
+
+            <Card className="mt-4">
+                <TableMenu page={page} setPage={setPage} totalPages={totalPages} setPageSize={setPageSize} pageSize={pageSize} columns={columns} toggleColumn={toggleColumn} paginationConfig={paginationConfig}></TableMenu>
+
+                <TableFull columns={columns} setDragged={setDragged} handleDrop={handleDrop} toggleSort={toggleSort} sort={sort} paginated={paginated}></TableFull>
+            </Card>
+         </TableContext.Provider>
+    );
 }
+
 `
 
 const commentBefore1 = 'Wszystko poplątane ze wszystkim - klasyczne dla prototypów R&D, które i tak idą do kosza, nieakceptowalne dla kodu, który ma pożyć dłużej niż 3 dni.'
@@ -630,7 +666,7 @@ export function PAT() {
       <Text as="p" mb="3">
         Oryginalna tabela miała prawie 600 linii kodu. Logika, UI, stan,
         sortowanie, paginacja, filtry i drag & drop były wymieszane w jednym
-        komponencie i całkowicie nie re-używalne (co jest normalne dla prototypów R&D - case study z Sudoku demonstruje z kolei odwrotne podejście z ładnym kodem od początku i w duchu TDD - ja dostosowuję podejście do typu projektu i poziomu eksperymentalności). To była tabela dla konkretnych danych. Rozbiłam ją na części, zrobiłam reużywalną i skróciłam do około 40 linijek.
+        komponencie i całkowicie nie re-używalne (co jest normalne dla prototypów R&D - case study z Sudoku demonstruje z kolei odwrotne podejście z ładnym kodem od początku i w duchu TDD - ja dostosowuję podejście do typu projektu i poziomu eksperymentalności). To była tabela dla konkretnych danych. Rozbiłam ją na części, zrobiłam reużywalną i skróciłam do około 80 linijek z czego 18 to importy.
       </Text>
 
       <BeforeAfter
@@ -641,29 +677,491 @@ export function PAT() {
       />
 
       <Heading size="4" mb="3">Rozplątywanie funkcji statefull i customowe hooki</Heading>
+      <Text>Tabela miała wszystkie możliwe stany i funkcje w jednym kompnencie i chciałam zacząć refakotor od wydzielenia funkcji czystych, ale okazało sie, że wszystkie są stanowe, więc je wydzieliłam do customowych hooków. Usunęłam też i18n, ponieważ wchodziło w konflikt z i18n w projekcie, gdzie była instalowana biblioteka oraz nie chciałam narzucać narzędzia. Biblioteka ma wewnętrzne tłumaczenia, które można będzie nadpisać w opcjonalnych propsach w kolejnych wersjach.</Text>
+
+      <Text>Przykład hooka:</Text>
+      <Card mt="4">
+        <Text>Przykład customowego hooka:</Text><pre>useSort.ts</pre>
+        <CodeBlock code={`import { useCallback, useMemo, useState } from "react";
+import type { TableData } from "../../types/data";
+import type { TableColumnsColumn } from "../../types/columns";
+import type { TableSortSort } from "../../types/sort";
+import { sortColumn } from './utils/sortColumn'
+import { toggleSortState } from './utils/toggleSortState'
+
+export function useSort<Data extends { id: string | number; }>(data: TableData<Data>) {
+    const [sort, setSort] = useState<TableSortSort<Data>>({
+        column: null,
+        direction: "asc",
+    });
+
+    const sortFn = useMemo(
+        () => sortColumn<Data>(sort.column?.id ?? null, sort.direction),
+        [sort.column?.id, sort.direction]
+    );
+
+    const sortedData = useMemo(() => [...data].sort(sortFn), [data, sortFn]);
+    const toggleSort = useCallback((column: TableColumnsColumn<Data> | null) => {
+        setSort(prev => toggleSortState(prev, column));
+    }, []);
+
+    return {
+        sortedData,
+        sort,
+        setSort,
+        toggleSort
+    }
+}
+        `}></CodeBlock>
+        <Text>Komentarz: W prototypie sortowanie było implementowane inline w komponencie, razem z UI i stanem.
+          Po refaktoryzacji przeniosłam je do dedykowanego hooka useSort, który:
+
+          jest w pełni generyczny (Data extends{' { id: string | number }'}),
+
+          ma czyste API (sortedData, sort, toggleSort),
+
+          memoizuje funkcję sortującą (useMemo),
+
+          memoizuje handler zmiany sortowania (useCallback),
+
+          deleguje logikę do czystych funkcji utilowych (sortColumn, toggleSortState),
+
+          nie ma żadnych zależności od UI (prawdziwy headless),
+
+          jest łatwy do testowania i reużywalny.
+
+          Dzięki temu UI tabeli jest cienką warstwą prezentacji, a logika sortowania pozostaje spójna, przewidywalna i wydajna.</Text>
+      </Card>
 
       <Heading size="4" mb="3">Podział na pod-komponenty i API tabeli</Heading>
+      <Text>Gdy miałam hooki gotowe i spokojnie mogłam w nich trzymać stan pomiędzy komponentami zaczęłam dzielić tabelę na części i robić kompozycję hooków.</Text>
+      <figure>
+  <img
+    src="PAT-architecture.png"
+    alt="Diagram architektury biblioteki probably‑a‑table"
+  />
+  <figcaption>
+    Architektura probably-a-table.
+  </figcaption>
+</figure>
+
 
       <Heading size="4" mb="3">Typowanie</Heading>
+      <Text>Wszystkie typy eksportuję, są oparte na generykach. Przykłady:</Text>
+      <Card my='4'>
+          <CodeBlock code={`type TableColumnsColumn<Data> = {
+    id: Extract<keyof Data, string>;
+    label: string;
+    visible: boolean;
+    render: (row: Data) => React.ReactNode;
+};
+            `} />
+      <Text>{`{To jest najważniejszy typ w całej bibliotece — definiuje pojedynczą kolumnę tabeli i wiąże ją bezpośrednio z typem danych Data.
+Użycie Extract<keyof Data, string> gwarantuje, że id kolumny zawsze odpowiada istniejącemu polu w danych, a jednocześnie wymusza, aby klucz był stringiem (co jest istotne dla drag‑and‑drop i identyfikacji kolumn).
+render: (row: Data) => ReactNode daje pełną kontrolę nad UI i jest fundamentem headlessowości — logika tabeli jest typowana, ale wygląd pozostaje w rękach użytkownika biblioteki.
+Ten typ pokazuje świadome projektowanie API, powiązanie danych z UI oraz wykorzystanie generics do zapewnienia bezpieczeństwa typów.`}</Text></Card>
+      <Card my='4'>
+  <CodeBlock code={`type TableFiltersFilters<Filters> = {
+    [K in keyof Filters]: string;
+};
+`} /><Text>{`To główny typ opisujący API komponentu ProbablyATable.
+Zawiera dwa niezależne generics: Data (typ danych wiersza) i Filters (typ filtrów). Od wersji 0.2 biblioteki filtry będą polami opcjonalnymi, zmienią się też nazwy typów na bardziej czytelne.
+Ograniczenie Data extends { id: string | number } zapewnia, że każdy wiersz ma unikalny identyfikator — co jest kluczowe dla Reacta, sortowania i drag‑and‑drop.
+Typ łączy wszystkie elementy biblioteki: kolumny, dane, filtry i paginację, a jednocześnie pozostaje prosty i przewidywalny dla użytkownika.
+To przykład projektowania API, które jest jednocześnie elastyczne, typowane i odporne na błędy — oraz pokazuje, jak generics mogą spinać wiele modułów w spójny system.`}</Text></Card>
+      
+      <Card my='4'>
+ <CodeBlock code={`interface ProbablyATableProps<Data extends { id: string | number }, Filters> {
+    columns: TableColumnsColumns<Data>;
+    data: TableData<Data>;
+    filters: TableFiltersFilters<Filters>;
+    defaultFilters: TableFiltersFilters<Filters>;
+    paginationConfig?: TablePaginationPageSizeConfig;
+}
+`} /><Text>{`To przykład użycia mapped types do automatycznego generowania struktury filtrów na podstawie interfejsu Filters.
+Każde pole w Filters staje się kluczem filtra, a jego wartością jest string — dzięki temu typy filtrów są zawsze spójne z danymi, a użytkownik biblioteki nie musi ręcznie powtarzać definicji.
+To rozwiązanie jest proste, ale bardzo elastyczne i skalowalne — pozwala na dynamiczne tworzenie filtrów bez duplikacji typów i bez ryzyka literówek.
+Ten typ pokazuje, że potrafię projektować API oparte na transformacji typów i wykorzystywać TypeScript jako system typów, a nie tylko jako „lepsze IntelliSense”.`}</Text></Card>
+      
+
 
       <Heading size="6" mb="3">Pokrycie testami</Heading>
+      <Text>Do testów usiadłam dopiero jak w miarę określiłam architekturę i skończyłam eksperymenty. Ten projekt był zbyt eksperymentalny na TDD, testy miały sesn dopiero po stabilizacji projektu.</Text>
 
       <Heading size="4" mb="3">Testy jednostkowe</Heading>
+      <Text> Z hooków udało się wyodrębnić czyste funkcje, gdy już nie były poplątane ze stanami i do nich napisałam testy jednostowe.</Text>
+
+      <CodeTest title1='toggleSortState.ts' title2='toggleSortState.test.ts' code={`import type { TableColumnsColumn } from "../../../types/columns";
+import type { TableSortSort } from "../../../types/sort";
+
+export function toggleSortState<Data>(
+  prev: TableSortSort<Data>,
+  column: TableColumnsColumn<Data> | null
+): TableSortSort<Data> {
+  if (prev.column === column) {
+    return {
+      column,
+      direction: prev.direction === "asc" ? "desc" : "asc",
+    };
+  }
+
+  return {
+    column,
+    direction: "asc",
+  };
+}
+        `}
+        test={`import {it, describe, expect} from "vitest";
+import { toggleSortState } from "./toggleSortState";
+import type { TableSortSort } from "../../../types/sort";
+import type { TableColumnsColumn } from "../../../types/columns";
+
+interface Data {
+    id: string,
+    size: number,
+    options: ['a','b']
+}
+
+describe('toggleSortState', () => {
+  const colA:TableColumnsColumn<Data> = {
+    id: 'id',
+    label: 'sdsd',
+    visible: true,
+    render: function (): React.ReactNode {
+      throw new Error("Function not implemented.");
+    }
+  };
+    const colB:TableColumnsColumn<Data> = {
+    id: 'size',
+    label: 'dssdsd',
+    visible: false,
+    render:()=>null
+  };
+
+  it('switches direction when clicking same column', () => {
+    const prev:TableSortSort<Data> = { column: colA, direction: 'asc' };
+    const result = toggleSortState<Data>(prev, colA);
+    expect(result.direction).toBe('desc');
+  });
+
+  it('resets to asc when clicking different column', () => {
+    const prev:TableSortSort<Data> = { column: colA, direction: 'desc' };
+    const result = toggleSortState<Data>(prev, colB);
+    expect(result).toEqual({ column: colB, direction: 'asc' });
+  });
+
+  it('handles null column', () => {
+    const prev:TableSortSort<Data> = { column: colA, direction: 'asc' };
+    const result = toggleSortState<Data>(prev, null);
+    expect(result).toEqual({ column: null, direction: 'asc' });
+  });
+
+  it('does not mutate previous state', () => {
+    const prev:TableSortSort<Data> = { column: colA, direction: 'asc' };
+    const result = toggleSortState<Data>(prev, colA);
+    expect(result).not.toBe(prev);
+  });
+});
+        `} />
+
+
+      toggleSortState — czysta logika sortowania + testy jednostkowe
+
+      Logika zmiany stanu sortowania została wyodrębniona do czystej funkcji toggleSortState.
+      Funkcja:
+
+      jest w pełni generyczna (Data),
+
+      nie ma side‑effectów,
+
+      nie mutuje poprzedniego stanu,
+
+      obsługuje wszystkie przypadki (ta sama kolumna, inna kolumna, null),
+
+      jest łatwa do testowania i reużywalna.
+
+      Do funkcji napisałam testy jednostkowe w Vitest, które pokrywają wszystkie scenariusze i edge‑cases.
+      Testy są w pełni typowane, co dodatkowo zwiększa bezpieczeństwo API.
+
+      Ten fragment świetnie pokazuje, jak rozbijam logikę domenową na małe, czyste, testowalne elementy — w przeciwieństwie do prototypu, gdzie sortowanie było wymieszane z UI i stanem.
+
 
       <Heading size="4" mb="3">Testy integracyjne</Heading>
+      <Text>Testy integracyjne spawdzały przepływ między funkcjami.</Text>
+      <Text>
+        Oprócz testów jednostkowych napisałam test integracyjny, który sprawdza współdziałanie dwóch modułów: toggleSortState i sortColumn.
+        Test odwzorowuje realny przepływ sortowania w tabeli i weryfikuje, że zmiana stanu sortowania wpływa na rzeczywiste ułożenie danych.
+        Dzięki temu logika sortowania jest stabilna, przewidywalna i niezależna od UI.
+      </Text>
+      <Card my="4">
+        <Text>Przykład: Testy integracyjne logiki sortowania</Text><pre>toggleAndSort.integration.test.ts</pre>
+        <CodeBlock code={`import type { TableColumnsColumn } from "@/shared/components/table/types/columns";
+import type { TableSortDirection, TableSortSort } from "@/shared/components/table/types/sort";
+import { describe, it, expect } from "vitest"
+import { toggleSortState } from "../../utils/toggleSortState";
+import { sortColumn } from "../../utils/sortColumn";
+
+describe('integration of toggle and sort', () => {
+    interface Data {
+        id: string,
+        size: number
+    }
+
+    const data: Data[] = [
+        { id: 'aaa', size: 6 },
+        { id: 'bbb', size: 9 },
+        { id: 'ccc', size: 6 },
+    ]
+
+    const colA: TableColumnsColumn<Data> = {
+        id: 'id',
+        label: 'sdsd',
+        visible: true,
+        render: ()=>null
+    };
+    const colB: TableColumnsColumn<Data> = {
+        id: 'size',
+        label: 'dssdsd',
+        visible: false,
+        render: () => null
+    };
+
+    const toggleState: TableSortDirection = "asc";
+
+    it('when toggle is changed, sorting changes direction', () => {
+        const prev: TableSortSort<Data> = { column: colA, direction: toggleState }
+        const result = toggleSortState<Data>(prev, colA);
+        const sortFn = sortColumn(result.column?.id ?? null, result.direction)
+        expect([...data].sort(sortFn)).toEqual([
+            { id: 'ccc', size: 6 },
+            { id: 'bbb', size: 9 },
+            { id: 'aaa', size: 6 },
+        ])
+    });
+
+    it('when column and toggle is changed, sorting changes direction', () => {
+        const prev: TableSortSort<Data> = { column: colB, direction: toggleState }
+        const result = toggleSortState<Data>(prev, colB);
+        const sortFn = sortColumn(result.column?.id ?? null, result.direction)
+        expect([...data].sort(sortFn)).toEqual([
+            { id: 'bbb', size: 9 },
+            { id: 'aaa', size: 6 },
+            { id: 'ccc', size: 6 },
+        ])
+    })
+})
+`} />
+      </Card>
 
       <Heading size="4" mb="3">Testy RTL</Heading>
+      <Text>Testów RTL użyłam do sprawdzenia sanity komponentu głównego oraz kilku przykładowych elementów. Testy RTL w bibliotece wymagają więcej pracy, ponieważ po migracji większa część przestała działać, choć w oryginalnym projekcie, z którego są wyciągnięte (MLOps) działają. Problem jest ujęty w roadmapie.</Text>
+
+          <CodeTest 
+          code={`import { Table } from "@radix-ui/themes";
+import { TableBody } from "./components/TableBody";
+import { TableHeader } from "./components/TableHeader";
+import type { TableColumnsColumns } from "../../types/columns";
+import type { TableData } from "../../types/data";
+import type { TableSortSort, TableSortToggleSort } from "../../types/sort";
+import type { TableDragHandleDrop, TableDragSetDragged } from "../../types/drag";
+
+interface TableFullProps<Data extends { id: string | number; }> {
+    columns: TableColumnsColumns<Data>,
+    setDragged: TableDragSetDragged,
+    handleDrop: TableDragHandleDrop,
+    toggleSort: TableSortToggleSort<Data>,
+    sort: TableSortSort<Data>,
+    paginated: TableData<Data>
+}
+
+export function TableFull<Data extends { id: string | number; }>(props: TableFullProps<Data>) {
+    const {
+        columns,
+        setDragged,
+        handleDrop,
+        toggleSort,
+        sort,
+        paginated
+    } = props;
+
+    return (
+        <Table.Root>
+            <TableHeader setDragged={setDragged} handleDrop={handleDrop} columns={columns} toggleSort={toggleSort} sort={sort}></TableHeader>
+            <TableBody paginated={paginated} columns={columns}></TableBody>
+        </Table.Root>
+    )
+}`} 
+          test={`import { fireEvent, render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
+import userEvent from "@testing-library/user-event";
+import { TableFull } from './TableFull';
+import type { TableColumnsColumns } from '../../types/columns';
+
+describe('TableFull integration tests', () => {
+
+  interface Data {
+    name: string,
+    id: number,
+    age: number
+  }
+
+  it("renders TableHeader and TableBody", () => {
+    const columns: TableColumnsColumns<Data> = [
+      { id: "name", label: "Name", visible: true, render: (row: Data) => row.name },
+    ];
+    const data = [{ id: 1, name: "Alice", age: 20 }];
+
+    render(
+      <TableFull
+        columns={columns}
+        paginated={data}
+        setDragged={() => { }}
+        handleDrop={() => { }}
+        toggleSort={() => { }}
+        sort={{ column: columns[0], direction: 'asc' }}
+      />
+    );
+
+    expect(screen.getByText((t) => t.includes("Name"))).toBeInTheDocument();
+    expect(screen.getByText("Alice")).toBeInTheDocument();
+  });
+
+  it("passes columns to header and body", () => {
+    const columns: TableColumnsColumns<Data> = [
+      { id: "name", label: "Name", visible: true, render: (row: Data) => row.name },
+    ];
+    const data = [{ id: 1, name: "Alice", age: 20 }];
+
+    render(
+      <TableFull
+        columns={columns}
+        paginated={data}
+        setDragged={() => { }}
+        handleDrop={() => { }}
+        toggleSort={() => { }}
+        sort={{ column: columns[0], direction: 'asc' }}
+      />
+    );
+
+    expect(screen.getByText((t) => t.includes("Name"))).toBeInTheDocument();
+    expect(screen.getByText("Alice")).toBeInTheDocument();
+  });
+  it("calls toggleSort when header is clicked", async () => {
+    const user = userEvent.setup();
+    const toggleSort = vi.fn();
+
+    const columns: TableColumnsColumns<Data> = [
+      { id: "name", label: "Name", visible: true, render: (row) => row.name },
+    ];
+    const data = [{ id: 1, name: "Alice", age: 20 }];
+
+    render(
+      <TableFull
+        columns={columns}
+        paginated={data}
+        setDragged={() => { }}
+        handleDrop={() => { }}
+        toggleSort={toggleSort}
+        sort={{ column: columns[0], direction: 'asc' }}
+      />
+    );
+
+    const header = screen.getByText((t) => t.includes("Name"));
+    await user.click(header);
+
+    expect(toggleSort).toHaveBeenCalledWith(columns[0]);
+  });
+  it("calls setDragged and handleDrop on drag events", () => {
+    const setDragged = vi.fn();
+    const handleDrop = vi.fn();
+
+    const columns: TableColumnsColumns<Data> = [
+      { id: "name", label: "Name", visible: true, render: (row) => row.name },
+    ];
+    const data = [{ id: 1, name: "Alice", age: 20 }];
+
+    render(
+      <TableFull
+        columns={columns}
+        paginated={data}
+        setDragged={setDragged}
+        handleDrop={handleDrop}
+        toggleSort={() => { }}
+        sort={{ column: columns[0], direction: 'asc' }}
+      />
+    );
+
+    const header = screen.getByText((t) => t.includes("Name"));
+
+    fireEvent.dragStart(header);
+    fireEvent.drop(header);
+
+    expect(setDragged).toHaveBeenCalledWith("name");
+    expect(handleDrop).toHaveBeenCalledWith("name");
+  });
+
+  it("renders one row per item in paginated", () => {
+    const columns: TableColumnsColumns<Data> = [
+      { id: "name", label: "Name", visible: true, render: (row) => row.name },
+    ];
+    const data = [
+      { id: 1, name: "Alice", age: 30 },
+      { id: 2, name: "Bob", age: 20 },
+    ];
+
+    render(
+      <TableFull
+        columns={columns}
+        paginated={data}
+        setDragged={() => { }}
+        handleDrop={() => { }}
+        toggleSort={() => { }}
+        sort={{ column: columns[0], direction: 'asc' }}
+      />
+    );
+
+    const rows = screen.getAllByRole("row");
+    expect(rows.length).toBe(1 + data.length);
+  });
+
+});
+`} 
+          title1={"TableFull.tsx"} 
+          title2={"TableFull.rtl.test.tsx"}
+          />
+
+          <Text>Testy RTL — integracja UI z logiką headless
+
+Oprócz testów jednostkowych i integracyjnych logiki napisałam także testy RTL, które sprawdzają zachowanie komponentów UI w realnych scenariuszach użytkownika.
+
+Testy weryfikują:
+
+renderowanie nagłówków i wierszy,
+
+przekazywanie kolumn do headera i body,
+
+wywoływanie toggleSort po kliknięciu nagłówka,
+
+obsługę drag & drop (setDragged, handleDrop),
+
+poprawne renderowanie liczby wierszy.
+
+Testy są w pełni typowane i sprawdzają integrację UI z logiką headless — bez mockowania całej tabeli.
+Dzięki temu mam pewność, że komponenty prezentacyjne poprawnie delegują zachowanie do hooków i utili.</Text>
 
       <Heading size="6" mb="3">Wyodrębnienie tabeli do osobnej biblioteki</Heading>
+      <Text>Wydzieliłam kod tabeli do osobnego projektu bibliotecznego.</Text>
 
       <Heading size="4" mb="3">Stworzenie dema</Heading>
+      <Text>Projekt biblioteki zawiera kod demonstracyjny, w który można od razu zobaczyć zmiany.</Text>
 
       <Heading size="4" mb="3">Bundling, yalc i npm link</Heading>
+      <Text>Biblioteka jest budowana za pomocą tsup. Początkowo do testów poza demem, a zanim opubikowałam na npm, używałam narzędzia yalc, które znałam z pracy, i którym budowałam bibblioteki Angularowe. Ale okazało się, że yalc czasem nie widzi się z Vite i jest to znany problem dla tej pary, więc przeniosłam się na stabilniejszy npm link.</Text>
 
       <Heading size="4" mb="3">Dokumentacja i publikacja na npm</Heading>
+      <Text>Biblioteka jest opublikowana na npm. Napisałam pełną dokumentację, roadmapę oraz changelog. Biblioteka ma już parę patchy, bo jak jej używam w innych projektach to zauważam rzeczy, któe mnie swędzą i je poprawiam. Dbam, żeby nie było zmian w API. Na pewno filtry staną się opcjonalne, reszty API nie planuję ruszać, a zmiana na opcjonalne nie zepsuje kodu w starszych wersjach.</Text>
 
-      <Heading size="6" mb="3">Demo i zademonstrowane umiejętności</Heading>
-      // tu tabela z lp, opisem i tagami 
+      <Heading size="6" mb="3">Zademonstrowane umiejętności</Heading>
       <ul style={{ marginBottom: "2rem" }}>
         <li>Headless UI — separacja logiki od widoku</li>
         <li>Zaawansowane typowanie (generics, inferencja)</li>
