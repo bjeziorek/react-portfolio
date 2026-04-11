@@ -130,7 +130,7 @@ export function CaseStudies() {
                         {
                             isExternal: false,
                             name: "caseStudy.seeCaseStudy",
-                            linkURL: "",
+                            linkURL: "/video",
                             buttonVariant: "solid"
                         },
                         {
