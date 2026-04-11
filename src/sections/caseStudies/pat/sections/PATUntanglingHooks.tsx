@@ -1,15 +1,27 @@
 import { Card, Text, Heading } from "@radix-ui/themes";
 import { CodeBlock } from "../../../../shared/CodeBlock";
+import { useTranslation } from "react-i18next";
 
 export function PATUntanglingHooks() {
-
+    const { t } = useTranslation()
 
     return (
         <>
-            <Heading size="4" mb="3">Rozplątywanie funkcji statefull i customowe hooki</Heading>
-            <Text>Tabela miała wszystkie możliwe stany i funkcje w jednym kompnencie i chciałam zacząć refakotor od wydzielenia funkcji czystych, ale okazało sie, że wszystkie są stanowe, więc je wydzieliłam do customowych hooków. Usunęłam też i18n, ponieważ wchodziło w konflikt z i18n w projekcie, gdzie była instalowana biblioteka oraz nie chciałam narzucać narzędzia. Biblioteka ma wewnętrzne tłumaczenia, które można będzie nadpisać w opcjonalnych propsach w kolejnych wersjach.</Text>
-
-            <Text>Przykład hooka:</Text>
+            <Heading size="6">{t("pat.h_hooks")}</Heading>
+            <Heading size="4">{t("pat.h2_hooks")}</Heading>
+            <Text>{t("pat.hooks1")}</Text>
+            <Text>{t("pat.hooks2")}</Text>
+            <ul>
+                <li>{t("pat.list1_hooks")}</li>
+                <li>{t("pat.list2_hooks")}</li>
+                <li>{t("pat.list3_hooks")}</li>
+                <li>{t("pat.list4_hooks")}</li>
+                <li>{t("pat.list5_hooks")}</li>
+            </ul>
+            <Text>{t("pat.hooks3")}</Text>
+            <Text>{t("pat.hooks4")}</Text>
+            <Heading size="4">{t("pat.h2_hooks1")}</Heading>
+            <Text>{t("pat.hooks5")}</Text>
             <Card mt="4">
                 <Text>Przykład customowego hooka:</Text><pre>useSort.ts</pre>
                 <CodeBlock code={`import { useCallback, useMemo, useState } from "react";
@@ -43,25 +55,32 @@ export function useSort<Data extends { id: string | number; }>(data: TableData<D
     }
 }
         `}></CodeBlock>
-                <Text>Komentarz: W prototypie sortowanie było implementowane inline w komponencie, razem z UI i stanem.
-                    Po refaktoryzacji przeniosłam je do dedykowanego hooka useSort, który:
 
-                    jest w pełni generyczny (Data extends{' { id: string | number }'}),
+           
+            </Card>    
+             <Heading size="4">{t("pat.h2_hooks2")}</Heading>
+                <Text>{t("pat.hooks6")}</Text>
+                <Text>{t("pat.hooks7")}</Text>
+                <ul>
+                    <li>{t("pat.list6_hooks")}</li>
+                    <li>{t("pat.list7_hooks")}</li>
+                    <li>{t("pat.list8_hooks")}</li>
+                    <li>{t("pat.list9_hooks")}</li>
+                    <li>{t("pat.list10_hooks")}</li>
+                    <li>{t("pat.list11_hooks")}</li>
+                    <li>{t("pat.list12_hooks")}</li>
+                    <li>{t("pat.list13_hooks")}</li>
+                </ul>
+                <Text>{t("pat.hooks8")}</Text>
+                <ul>
+                    <li>{t("pat.list14_hooks")}</li>
+                    <li>{t("pat.list15_hooks")}</li>
+                    <li>{t("pat.list16_hooks")}</li>
+                    <li>{t("pat.list17_hooks")}</li>
+                    <li>{t("pat.list18_hooks")}</li>
+                </ul>
 
-                    ma czyste API (sortedData, sort, toggleSort),
-
-                    memoizuje funkcję sortującą (useMemo),
-
-                    memoizuje handler zmiany sortowania (useCallback),
-
-                    deleguje logikę do czystych funkcji utilowych (sortColumn, toggleSortState),
-
-                    nie ma żadnych zależności od UI (prawdziwy headless),
-
-                    jest łatwy do testowania i reużywalny.
-
-                    Dzięki temu UI tabeli jest cienką warstwą prezentacji, a logika sortowania pozostaje spójna, przewidywalna i wydajna.</Text>
-            </Card>
+                <Text>{t("pat.hooks9")}</Text>
         </>
     )
 }

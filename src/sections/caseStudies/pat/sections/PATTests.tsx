@@ -1,19 +1,21 @@
 import { Card, Text, Heading } from "@radix-ui/themes";
 import { CodeBlock } from "../../../../shared/CodeBlock";
 import { CodeTest } from "../../../../shared/CodeTest";
+import { useTranslation } from "react-i18next";
 
 export function PATTests() {
+  const { t } = useTranslation()
+  return (
+    <>
+      <Heading size="6">{t('pat.h_tests')}</Heading>
+      <Text>{t('pat.tests1')}</Text>
+      <Text>{t('pat.tests2')}</Text>
 
-    return (
-        <>
-             <Heading size="6" mb="3">Pokrycie testami</Heading>
-            <Text>Do testów usiadłam dopiero jak w miarę określiłam architekturę i skończyłam eksperymenty. Ten projekt był zbyt eksperymentalny na TDD, testy miały sesn dopiero po stabilizacji projektu.</Text>
+      <Heading size="4">{t('pat.h2_tests1')}</Heading>
+      <Text>{t('pat.tests3')}</Text>
 
-            <Heading size="4" mb="3">Testy jednostkowe</Heading>
-            <Text> Z hooków udało się wyodrębnić czyste funkcje, gdy już nie były poplątane ze stanami i do nich napisałam testy jednostowe.</Text>
-
-            <CodeTest title1='toggleSortState.ts' title2='toggleSortState.test.ts' 
-            code={`import type { TableColumnsColumn } from "../../../types/columns";
+      <CodeTest title1='toggleSortState.ts' title2='toggleSortState.test.ts'
+        code={`import type { TableColumnsColumn } from "../../../types/columns";
 import type { TableSortSort } from "../../../types/sort";
 
 export function toggleSortState<Data>(
@@ -33,7 +35,7 @@ export function toggleSortState<Data>(
   };
 }
         `}
-                test={`import {it, describe, expect} from "vitest";
+        test={`import {it, describe, expect} from "vitest";
 import { toggleSortState } from "./toggleSortState";
 import type { TableSortSort } from "../../../types/sort";
 import type { TableColumnsColumn } from "../../../types/columns";
@@ -85,39 +87,31 @@ describe('toggleSortState', () => {
   });
 });
         `} />
-
-
-            toggleSortState — czysta logika sortowania + testy jednostkowe
-
-            Logika zmiany stanu sortowania została wyodrębniona do czystej funkcji toggleSortState.
-            Funkcja:
-
-            jest w pełni generyczna (Data),
-
-            nie ma side‑effectów,
-
-            nie mutuje poprzedniego stanu,
-
-            obsługuje wszystkie przypadki (ta sama kolumna, inna kolumna, null),
-
-            jest łatwa do testowania i reużywalna.
-
-            Do funkcji napisałam testy jednostkowe w Vitest, które pokrywają wszystkie scenariusze i edge‑cases.
-            Testy są w pełni typowane, co dodatkowo zwiększa bezpieczeństwo API.
-
-            Ten fragment świetnie pokazuje, jak rozbijam logikę domenową na małe, czyste, testowalne elementy — w przeciwieństwie do prototypu, gdzie sortowanie było wymieszane z UI i stanem.
-
-
-            <Heading size="4" mb="3">Testy integracyjne</Heading>
-            <Text>Testy integracyjne spawdzały przepływ między funkcjami.</Text>
-            <Text>
-                Oprócz testów jednostkowych napisałam test integracyjny, który sprawdza współdziałanie dwóch modułów: toggleSortState i sortColumn.
-                Test odwzorowuje realny przepływ sortowania w tabeli i weryfikuje, że zmiana stanu sortowania wpływa na rzeczywiste ułożenie danych.
-                Dzięki temu logika sortowania jest stabilna, przewidywalna i niezależna od UI.
-            </Text>
-            <Card my="4">
-                <Text>Przykład: Testy integracyjne logiki sortowania</Text><pre>toggleAndSort.integration.test.ts</pre>
-                <CodeBlock code={`import type { TableColumnsColumn } from "@/shared/components/table/types/columns";
+      <Heading size="4">{t('pat.h2_tests3')}</Heading>
+      <Text>{t('pat.tests4')}</Text>
+      <ul>
+        <li>{t('pat.list1_tests')}</li>
+        <li>{t('pat.list2_tests')}</li>
+        <li>{t('pat.list3_tests')}</li>
+        <li>{t('pat.list4_tests')}</li>
+        <li>{t('pat.list5_tests')}</li>
+      </ul>
+      <Text>{t('pat.tests5')}</Text>
+      <Text>{t('pat.tests6')}</Text>
+      <Text>{t('pat.tests7')}</Text>
+      <Heading size="4">{t('pat.h2_tests4')}</Heading>
+      <Text>{t('pat.tests8')}</Text>
+      <Text>{t('pat.tests9')}</Text>
+      <ul>
+        <li>{t('pat.list6_tests')}</li>
+        <li>{t('pat.list7_tests')}</li>
+        <li>{t('pat.list8_tests')}</li>
+        <li>{t('pat.list9_tests')}</li>
+      </ul>
+      <Text>{t('pat.tests10')}</Text>
+      <Card my="4">
+        <pre>toggleAndSort.integration.test.ts</pre>
+        <CodeBlock code={`import type { TableColumnsColumn } from "@/shared/components/table/types/columns";
 import type { TableSortDirection, TableSortSort } from "@/shared/components/table/types/sort";
 import { describe, it, expect } from "vitest"
 import { toggleSortState } from "../../utils/toggleSortState";
@@ -173,13 +167,22 @@ describe('integration of toggle and sort', () => {
     })
 })
 `} />
-            </Card>
-
-            <Heading size="4" mb="3">Testy RTL</Heading>
-            <Text>Testów RTL użyłam do sprawdzenia sanity komponentu głównego oraz kilku przykładowych elementów. Testy RTL w bibliotece wymagają więcej pracy, ponieważ po migracji większa część przestała działać, choć w oryginalnym projekcie, z którego są wyciągnięte (MLOps) działają. Problem jest ujęty w roadmapie.</Text>
-
-            <CodeTest
-                code={`import { Table } from "@radix-ui/themes";
+      </Card>
+      <Heading size="4">{t('pat.h2_tests5')}</Heading>
+      <Text>{t('pat.tests11')}</Text>
+      <Text>{t('pat.tests12')}</Text>
+      <ul>
+        <li>{t('pat.list10_tests')}</li>
+        <li>{t('pat.list11_tests')}</li>
+        <li>{t('pat.list12_tests')}</li>
+        <li>{t('pat.list13_tests')}</li>
+      </ul>
+      <Heading size="4">{t('pat.h2_tests')}</Heading>
+      <Text>{t('pat.tests13')}</Text>
+      <Text>{t('pat.tests14')}</Text>
+      <Text>{t('pat.tests15')}</Text>
+      <CodeTest
+        code={`import { Table } from "@radix-ui/themes";
 import { TableBody } from "./components/TableBody";
 import { TableHeader } from "./components/TableHeader";
 import type { TableColumnsColumns } from "../../types/columns";
@@ -213,7 +216,7 @@ export function TableFull<Data extends { id: string | number; }>(props: TableFul
         </Table.Root>
     )
 }`}
-                test={`import { fireEvent, render, screen } from '@testing-library/react';
+        test={`import { fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import userEvent from "@testing-library/user-event";
 import { TableFull } from './TableFull';
@@ -348,28 +351,19 @@ describe('TableFull integration tests', () => {
 
 });
 `}
-                title1={"TableFull.tsx"}
-                title2={"TableFull.rtl.test.tsx"}
-            />
-
-            <Text>Testy RTL — integracja UI z logiką headless
-
-                Oprócz testów jednostkowych i integracyjnych logiki napisałam także testy RTL, które sprawdzają zachowanie komponentów UI w realnych scenariuszach użytkownika.
-
-                Testy weryfikują:
-
-                renderowanie nagłówków i wierszy,
-
-                przekazywanie kolumn do headera i body,
-
-                wywoływanie toggleSort po kliknięciu nagłówka,
-
-                obsługę drag & drop (setDragged, handleDrop),
-
-                poprawne renderowanie liczby wierszy.
-
-                Testy są w pełni typowane i sprawdzają integrację UI z logiką headless — bez mockowania całej tabeli.
-                Dzięki temu mam pewność, że komponenty prezentacyjne poprawnie delegują zachowanie do hooków i utili.</Text>
-        </>
-    )
+        title1={"TableFull.tsx"}
+        title2={"TableFull.rtl.test.tsx"}
+      />
+      <Heading size="4">{t('pat.h2_tests2')}</Heading>
+      <Text>{t('pat.tests16')}</Text>
+      <ul>
+        <li>{t('pat.list14_tests')}</li>
+        <li>{t('pat.list15_tests')}</li>
+        <li>{t('pat.list16_tests')}</li>
+        <li>{t('pat.list17_tests')}</li>
+        <li>{t('pat.list18_tests')}</li>
+      </ul>
+      <Text>{t('pat.tests17')}</Text>
+    </>
+  )
 }

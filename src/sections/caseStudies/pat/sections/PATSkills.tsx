@@ -1,29 +1,32 @@
-import { Text, Heading } from "@radix-ui/themes";
+import { Text, Heading, Flex } from "@radix-ui/themes";
+import { useTranslation } from "react-i18next";
 
 export function PATSkills() {
 
+    const { t } = useTranslation()
     return (
-        <>
-           
-            <Heading size="6" mb="3">Zademonstrowane umiejętności</Heading>
-            <ul style={{ marginBottom: "2rem" }}>
-                <li>Headless UI — separacja logiki od widoku</li>
-                <li>Zaawansowane typowanie (generics, inferencja)</li>
-                <li>Projektowanie API i architektury</li>
-                <li>Custom hooks (useSort, useFilter, usePagination, useColumns)</li>
-                <li>Testowalność i modularność</li>
-                <li>Bundlowanie i publikacja na npm</li>
-                <li>Refaktoryzacja dużego komponentu do biblioteki</li>
+        <Flex direction='column'>
+            <Heading size="6">{t('pat.h_skills')}</Heading>
+            <Text>{t('pat.skills1')}</Text>
+            <ul>
+                <li>{t('pat.list1_skills')}</li>
+                <li>{t('pat.list2_skills')}</li>
+                <li>{t('pat.list3_skills')}</li>
+                <li>{t('pat.list4_skills')}</li>
+                <li>{t('pat.list5_skills')}</li>
+                <li>{t('pat.list6_skills')}</li>
+                <li>{t('pat.list7_skills')}</li>
+                <li>{t('pat.list8_skills')}</li>
             </ul>
+            <Heading size="4">{t('pat.h2_skills2')}</Heading>
+            <Text>{t('pat.skills2')}</Text>
+            <Text>{t('pat.skills3')}</Text>
 
-            <Heading size="4" mb="3">Podsumowanie</Heading>
-            <Text as="p">
-                Probably‑A‑Table to przykład mojego procesu: szybki prototyp → analiza →
-                refaktoryzacja → architektura → biblioteka. Projekt pokazuje zarówno
-                umiejętność szybkiego R&D, jak i tworzenia czystych, reużywalnych
-                narzędzi dla innych developerów.
-            </Text>
-
-        </>
+            <ul>
+                <li>{t('pat.list9_skills')}</li>
+                <li>{t('pat.list10_skills')}</li>
+            </ul>
+            <Text>{t('pat.skills4')}</Text>
+        </Flex>
     )
 }
