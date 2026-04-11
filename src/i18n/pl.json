@@ -42,7 +42,7 @@
     "typeGenerics": "Tworzenie złożonych typów z generykami",
     "sudokuCardTitle": "Sudoku - generowanie planszy",
     "sudokuCardDescription": "Zaprojektowałam i zaimplementowałam generator sudoku od zera, w duchu TDD. Cały proces — od pierwszego szkicu na kartce, przez pisanie testów, po refaktoryzację — nagrałam w formie 8‑godzinnego timelapse, z którego przygotowałam serię highlightów pokazujących realny proces myślenia i pracy. Projekt demonstruje, jak podchodzę do problemów algorytmicznych, jak projektuję API i jak iteruję.",
-    "algorithms": "Myślenie algorytmiczne",
+    "JSDocs": "JSDocs",
     "tdd": "Test Driven Development",
     "jiraEstimations": "Praca z Jirą i estymacje",
     "fromScratch": "Tworzenie projektu od zera",

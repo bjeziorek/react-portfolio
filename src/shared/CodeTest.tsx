@@ -15,7 +15,7 @@ export function CodeTest(props: CodeTestProps) {
 
     return (
         <Card my='4'>
-            <Tabs.Root defaultValue="before">
+            <Tabs.Root defaultValue="code">
                 <Tabs.List>
                     <Tabs.Trigger value="code">{t('universal.code')}</Tabs.Trigger>
                     <Tabs.Trigger value="test">{t('universal.test')}</Tabs.Trigger>

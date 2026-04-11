@@ -3,7 +3,7 @@ import Dashboard from "./Dashboard";
 import FAQ from "./sections/FAQ";
 import { VideoCaseStudy } from "./sections/VideoCaseStudy";
 import { CaseStudies } from "./sections/caseStudies/CaseStudies";
-import { PAT } from "./sections/caseStudies/PAT";
+import { PAT } from "./sections/caseStudies/pat/PAT";
 import { Intro } from "./sections/Intro";
 
 

@@ -124,7 +124,7 @@ export function CaseStudies() {
                 <CaseStudy
                     title={"caseStudy.sudokuCardTitle"}
                     description={"caseStudy.sudokuCardDescription"}
-                    skills={["caseStudy.algorithms", "caseStudy.tdd", "caseStudy.jiraEstimations", "caseStudy.fromScratch"]}
+                    skills={["caseStudy.JSDocs", "caseStudy.tdd", "caseStudy.jiraEstimations", "caseStudy.fromScratch"]}
                     techStack={["React 19", "Radix", "Vitest"]}
                     links={[
                         {
