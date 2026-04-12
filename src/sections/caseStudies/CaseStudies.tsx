@@ -218,7 +218,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.blog",
-                            linkURL: "",
+                            linkURL: "https://randomindexed.blogspot.com/2026/01/r-what-happens-when-r-engineer-ends-up_26.html",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
@@ -233,7 +233,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.blog",
-                            linkURL: "",
+                            linkURL: "https://randomindexed.blogspot.com/2026/01/r-what-happens-when-r-engineer-refuses.html",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }

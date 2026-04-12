@@ -1,6 +1,6 @@
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Brain, FlaskConical, Home, Puzzle, HeartPlus, BookSearch, LibraryBig } from "lucide-react";
+import { Brain, FlaskConical, Home, Puzzle, HeartPlus, BookSearch, LibraryBig, Book } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Box, Flex, Heading } from "@radix-ui/themes";
 import { SidebarNavItem } from "./SidebarNavItem";
@@ -35,13 +35,13 @@ export default function Sidebar() {
                 <SidebarNavItem
                     to="/caseStudies"
                     label={t("menu.caseStudies")}
-                    icon={<BookSearch size={18} />}
+                    icon={<Brain size={18} />}
                 />
 
                 <SidebarNavItem
                     to="/faq"
                     label={t("menu.faq")}
-                    icon={<Brain size={18} />}
+                    icon={<Book size={18} />}
                 />
             </Flex>
         </Box>

@@ -2,6 +2,7 @@ import { Button, Flex } from "@radix-ui/themes";
 import { useTheme } from "../providers/ThemeContext";
 
 import { useTranslation } from "react-i18next";
+import { Moon, Sun } from "lucide-react";
 
 
 export default function Topbar() {
@@ -13,7 +14,7 @@ console.log(i18n.language.toUpperCase())
 
 
   const changeLanguage = (lng:'pl'|'en') => {
-    i18n.changeLanguage(lng); // 'pl', 'en', ...
+    i18n.changeLanguage(lng);
   };
 
   return (
@@ -26,7 +27,7 @@ console.log(i18n.language.toUpperCase())
         onClick={toggleTheme}
         m='4'
         >
-          {theme === "light" ? "🌙" : "☀️"}
+          {theme === "light" ? <Moon/> : <Sun/>}
         </Button>
 
  <Button 
