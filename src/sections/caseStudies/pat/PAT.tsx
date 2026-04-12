@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { BeforeAfter } from "../../../shared/BeforeAfter";
 import { PATUntanglingHooks } from "./sections/PATUntanglingHooks";
 import { PATSubcomponentCut } from "./sections/PATSubcomponentCut";
@@ -15,6 +15,7 @@ export function PAT() {
 
     return (
         <Card>
+            <Box m="4">
             <Flex direction="column">
                 <Heading>
                     {t("pat.title")}
@@ -30,8 +31,6 @@ export function PAT() {
                 <Text>{t("pat.constext2")}</Text>
                 <Text>{t("pat.constext3")}</Text>
                 <Text>{t("pat.constext4")}</Text>
-
-
 
                 <Heading size="6" mb="-3">
                     {t("pat.h_refactor")}
@@ -74,6 +73,7 @@ export function PAT() {
             <PATTests />
             <PATLib />
             <PATSkills />
+            </Box>
         </Card>
     );
 }

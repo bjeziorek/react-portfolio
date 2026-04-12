@@ -37,8 +37,8 @@ export function Intro() {
 
             <Grid columns={{ initial: "1", md: "2" }} gap="3" width="auto">
                 <Card>
-                    <Flex direction="column" gap="4" justify="between" height="100%">
-                        <Heading size="4" my="0">{t("intro.architecture")}</Heading>
+                    <Flex direction="column" gap="4" mx="4" justify="between" height="100%">
+                        <Heading size="4" mb="0" mt="2">{t("intro.architecture")}</Heading>
                         <Text>{t("intro.in_1")}</Text>
                         <SidebarNavItem
                             to="/pat"
@@ -49,8 +49,8 @@ export function Intro() {
                     </Flex>
                 </Card>
                 <Card>
-                    <Flex direction="column" gap="4" justify="between"  height="100%">
-                        <Heading size="4" my="0">{t("intro.video")}</Heading>
+                    <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
+                        <Heading size="4" mb="0" mt="2">{t("intro.video")}</Heading>
                         <Text>{t("intro.in_2")}</Text>
                         <SidebarNavItem
                             to="/video"
@@ -61,8 +61,8 @@ export function Intro() {
                     </Flex>
                 </Card>
                 <Card>
-                    <Flex direction="column" gap="4" justify="between"  height="100%">
-                        <Heading size="4" my="0">{t("intro.more")}</Heading>
+                    <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
+                        <Heading size="4"  mb="0" mt="2">{t("intro.more")}</Heading>
                         <Text>{t("intro.in_3")}</Text>
                         <SidebarNavItem
                             to="/caseStudies"
@@ -74,8 +74,8 @@ export function Intro() {
                 </Card>
                 <Card>
                   
-                    <Flex direction="column" gap="4" justify="between"  height="100%"> 
-                         <Heading size="4" my="0">{t("intro.qnd")}</Heading>
+                    <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%"> 
+                         <Heading size="4"  mb="0" mt="2">{t("intro.qnd")}</Heading>
                         <Text>{t("intro.in_4")}</Text>
                         <SidebarNavItem
                             to="/faq"
@@ -87,8 +87,8 @@ export function Intro() {
                 </Card>
                 <Card>
                     
-                    <Flex direction="column" gap="4" justify="between"  height="100%">
-                        <Heading size="4" my="0">{t("intro.brain")}</Heading>
+                    <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
+                        <Heading size="4"  mb="0" mt="2">{t("intro.brain")}</Heading>
                         <Text>{t("intro.in_5")}</Text>
                         <SidebarNavItem
                             to="https://randomindexed.blogspot.com/"

@@ -8,7 +8,6 @@ export function PATUntanglingHooks() {
     return (
         <>
             <Heading size="6">{t("pat.h_hooks")}</Heading>
-            <Heading size="4">{t("pat.h2_hooks")}</Heading>
             <Text>{t("pat.hooks1")}</Text>
             <Text>{t("pat.hooks2")}</Text>
             <ul>
@@ -55,32 +54,30 @@ export function useSort<Data extends { id: string | number; }>(data: TableData<D
     }
 }
         `}></CodeBlock>
+            </Card>
+            <Heading size="4">{t("pat.h2_hooks2")}</Heading>
+            <Text>{t("pat.hooks6")}</Text>
+            <Text>{t("pat.hooks7")}</Text>
+            <ul>
+                <li>{t("pat.list6_hooks")}</li>
+                <li>{t("pat.list7_hooks")}</li>
+                <li>{t("pat.list8_hooks")}</li>
+                <li>{t("pat.list9_hooks")}</li>
+                <li>{t("pat.list10_hooks")}</li>
+                <li>{t("pat.list11_hooks")}</li>
+                <li>{t("pat.list12_hooks")}</li>
+                <li>{t("pat.list13_hooks")}</li>
+            </ul>
+            <Text>{t("pat.hooks8")}</Text>
+            <ul>
+                <li>{t("pat.list14_hooks")}</li>
+                <li>{t("pat.list15_hooks")}</li>
+                <li>{t("pat.list16_hooks")}</li>
+                <li>{t("pat.list17_hooks")}</li>
+                <li>{t("pat.list18_hooks")}</li>
+            </ul>
 
-           
-            </Card>    
-             <Heading size="4">{t("pat.h2_hooks2")}</Heading>
-                <Text>{t("pat.hooks6")}</Text>
-                <Text>{t("pat.hooks7")}</Text>
-                <ul>
-                    <li>{t("pat.list6_hooks")}</li>
-                    <li>{t("pat.list7_hooks")}</li>
-                    <li>{t("pat.list8_hooks")}</li>
-                    <li>{t("pat.list9_hooks")}</li>
-                    <li>{t("pat.list10_hooks")}</li>
-                    <li>{t("pat.list11_hooks")}</li>
-                    <li>{t("pat.list12_hooks")}</li>
-                    <li>{t("pat.list13_hooks")}</li>
-                </ul>
-                <Text>{t("pat.hooks8")}</Text>
-                <ul>
-                    <li>{t("pat.list14_hooks")}</li>
-                    <li>{t("pat.list15_hooks")}</li>
-                    <li>{t("pat.list16_hooks")}</li>
-                    <li>{t("pat.list17_hooks")}</li>
-                    <li>{t("pat.list18_hooks")}</li>
-                </ul>
-
-                <Text>{t("pat.hooks9")}</Text>
+            <Text>{t("pat.hooks9")}</Text>
         </>
     )
 }

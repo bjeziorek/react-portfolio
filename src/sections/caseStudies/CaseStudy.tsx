@@ -25,9 +25,10 @@ export function CaseStudy(props: CaseStudyProps) {
 
     return (
         <Card>
+            <Flex justify="between" direction="column" height="100%">
             <Box mx="4">
                 <Heading size="4">{t(title)}</Heading>
-                <Flex gap="5" direction="column" mb="4">
+                <Flex gap="5" direction="column" mb="4" >
                     <Text>{t(description)}</Text>
                     <Box>
                         <Text>{t("caseStudy.skillsDemonstrated")}:</Text>
@@ -49,7 +50,11 @@ export function CaseStudy(props: CaseStudyProps) {
                             ))}
                         </ul>
                     </Box>
-                    <Flex gap="3" wrap="wrap">
+                   
+                </Flex>
+            </Box>
+            <Box m="4">
+             <Flex gap="3" wrap="wrap">
                         {links.map(link => {
                             return link.isExternal
                                 ? (
@@ -72,8 +77,8 @@ export function CaseStudy(props: CaseStudyProps) {
                                 )
                         })}
                     </Flex>
-                </Flex>
-            </Box>
+                    </Box>
+            </Flex>
         </Card>
     )
 }

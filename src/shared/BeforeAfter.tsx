@@ -14,7 +14,7 @@ export function BeforeAfter(props: BeforeAfterProps) {
     const { t } = useTranslation();
 
     return (
-        <Card mb='4'>
+        <Card my='4'>
             <Tabs.Root defaultValue="before">
                 <Tabs.List>
                     <Tabs.Trigger value="before">{t('universal.before')}</Tabs.Trigger>

@@ -1,4 +1,4 @@
-import { Card, Text, Heading, Flex } from "@radix-ui/themes";
+import { Card, Text, Heading, Flex, Box } from "@radix-ui/themes";
 import { Video } from "../shared/Video";
 import { ExternalLink } from "lucide-react";
 import { SidebarNavItem } from "../navigation/SidebarNavItem";
@@ -9,6 +9,7 @@ export function VideoCaseStudy() {
 
     return (
         <Card>
+            <Box m="4">
             <Flex direction="column" gap="4">
                 <Heading size="6">{t('sudoku.title')}</Heading>
 
@@ -123,7 +124,7 @@ export function VideoCaseStudy() {
 
                 <Video
                     title={"rowCheck"}
-                    url={"6"}
+                    url={"https://www.youtube.com/embed//bWqES0QviS0"}
                 />
                 <Heading size="4">{t('sudoku.h_subsquaresTests')}</Heading>
 
@@ -132,7 +133,7 @@ export function VideoCaseStudy() {
 
                 <Video
                     title={"rowCheck"}
-                    url={"7"}
+                    url={"https://www.youtube.com/embed/Vtf8zF3INVs"}
                 />
                 <Heading size="4">{t('sudoku.h_debugging')}</Heading>
 
@@ -147,7 +148,7 @@ export function VideoCaseStudy() {
                 <Text>{t('sudoku.debugging3')}</Text>
                 <Video
                     title={"rowCheck"}
-                    url={"8"}
+                    url={"https://www.youtube.com/embed/VTyLtaQsxD0"}
                 />
                 <Heading size="4">{t('sudoku.h_summary')}</Heading>
 
@@ -185,6 +186,7 @@ export function VideoCaseStudy() {
                 <Text>{t('sudoku.summary3')}</Text>
                 <Text>{t('sudoku.summary4')}</Text>
             </Flex>
+            </Box>
         </Card>
     );
 }
