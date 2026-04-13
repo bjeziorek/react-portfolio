@@ -35,21 +35,21 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.blog",
-                            linkURL: "",
+                            linkURL: "https://randomindexed.blogspot.com/2026/04/when-react-dev-procrastinates-writing.html",
                             buttonVariant: "outline",
                             isIconBehind: true
                         },
                         {
                             isExternal: true,
                             name: "universal.github",
-                            linkURL: "",
+                            linkURL: "https://github.com/bjeziorek/probably-a-table",
                             buttonVariant: "outline",
                             isIconBehind: true
                         },
                         {
                             isExternal: true,
                             name: "universal.npm",
-                            linkURL: "",
+                            linkURL: "https://www.npmjs.com/package/probably-a-table",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
@@ -63,25 +63,18 @@ export function CaseStudies() {
                     links={[
                         {
                             isExternal: true,
-                            name: "universal.blog",
-                            linkURL: "",
-                            buttonVariant: "outline",
-                            isIconBehind: true
-                        },
-                        {
-                            isExternal: true,
                             name: "universal.github",
-                            linkURL: "",
+                            linkURL: "https://github.com/bjeziorek/stunning-pancake",
                             buttonVariant: "outline",
                             isIconBehind: true
                         },
-                        {
-                            isExternal: true,
-                            name: "universal.youtube",
-                            linkURL: "",
-                            buttonVariant: "outline",
-                            isIconBehind: true
-                        }
+                        // {
+                        //     isExternal: true,
+                        //     name: "universal.youtube",
+                        //     linkURL: "",
+                        //     buttonVariant: "outline",
+                        //     isIconBehind: true
+                        // }
                     ]}
                 />
             </Grid>
@@ -136,7 +129,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.github",
-                            linkURL: "",
+                            linkURL: "https://github.com/bjeziorek/sudoku",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
@@ -151,7 +144,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.blog",
-                            linkURL: "",
+                            linkURL: "https://randomindexed.blogspot.com/2026/01/r-what-happens-when-r-engineer-ends-up.html",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
@@ -177,7 +170,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.blog",
-                            linkURL: "",
+                            linkURL: "https://randomindexed.blogspot.com/2026/03/r-what-happens-when-r-engineer-hacks.html",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
@@ -192,7 +185,7 @@ export function CaseStudies() {
                         {
                             isExternal: true,
                             name: "universal.youtube",
-                            linkURL: "",
+                            linkURL: "https://youtu.be/3N3xMPoE7XA",
                             buttonVariant: "outline",
                             isIconBehind: true
                         }
