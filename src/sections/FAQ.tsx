@@ -5,10 +5,10 @@ function FAQ() {
     const { t } = useTranslation();
     return (
         <>
-            <Heading size='6'>{t("faq.title")}</Heading>
+            <Heading size='6' color="crimson">{t("faq.title")}</Heading>
             <Flex direction="column" gap="4">
                 <Flex direction="column">
-                    <Heading size="4">{t('faq.q1')}</Heading>
+                    <Heading size="4" color="crimson">{t('faq.q1')}</Heading>
                     <Text>{t('faq.a1_1a')}</Text>
                     <Text>{t('faq.a1_1b')}</Text>
                     <Text>{t('faq.a1_2')}</Text>
@@ -17,7 +17,7 @@ function FAQ() {
                     <Text>{t('faq.a1_5')}</Text>
                 </Flex>
                 <Flex direction="column">
-                    <Heading size="4">{t('faq.q2')}</Heading>
+                    <Heading size="4" color="crimson">{t('faq.q2')}</Heading>
                     <Text>{t('faq.a2_1')}</Text>
                     <Text>{t('faq.a2_2')}</Text>
                     <Text>{t('faq.a2_3')}</Text>
@@ -27,7 +27,7 @@ function FAQ() {
                     <Text>{t('faq.a2_7')}</Text>
                 </Flex>
                 <Flex direction="column">
-                    <Heading size="4">{t('faq.q3')}</Heading>
+                    <Heading size="4" color="crimson">{t('faq.q3')}</Heading>
                     <Text>{t('faq.a3_1')}</Text>
                     <Text>{t('faq.a3_2')}</Text>
                     <Text>{t('faq.list_a3_1')}</Text>
@@ -38,7 +38,7 @@ function FAQ() {
                 </Flex>
 
                 <Flex direction="column">
-                    <Heading size="4">{t('faq.q4')}</Heading>
+                    <Heading size="4" color="crimson">{t('faq.q4')}</Heading>
                     <Text>{t('faq.a4_1')}</Text>
                     <Text>{t('faq.a4_2')}</Text>
                     <Text>{t('faq.a4_3')}</Text>

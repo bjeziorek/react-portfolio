@@ -9,9 +9,9 @@ export function CaseStudies() {
 
     return (
         <Container>
-            <Heading>{t('menu.caseStudies')}</Heading>
+            <Heading color="crimson">{t('menu.caseStudies')}</Heading>
             <Box mb="4">
-            <Heading size="4">
+            <Heading size="4" color="crimson">
                 <Flex align="center" justify="center"  mb="-4">
                     <Code />
                     <Text ml="2">{t('caseStudy.reactCore')}</Text>
@@ -86,7 +86,7 @@ export function CaseStudies() {
                 />
             </Grid>
             <Box mb="4">
-            <Heading size="4">
+            <Heading size="4" color="crimson">
                 <Flex align="center" justify="center"  mb="-4">
                     <Boxes />
                     <Text ml="2">{t('caseStudy.reactCommercial')}</Text>
@@ -111,7 +111,7 @@ export function CaseStudies() {
                 />
             </Grid>
             <Box mb="4">
-            <Heading size="4">
+            <Heading size="4" color="crimson">
                 <Flex align="center" justify="center" mb="-4">
                     <Brain />
                     <Text ml="2">{t('caseStudy.problemSolving')}</Text>
@@ -159,7 +159,7 @@ export function CaseStudies() {
                 />
             </Grid>
             <Box mb="4">
-            <Heading size="4">
+            <Heading size="4" color="crimson">
                 <Flex align="center" justify="center" mb="-4">
                     <ChartNoAxesCombined />
                     <Text ml="2">{t('caseStudy.end2endSolutions')}</Text>
@@ -200,7 +200,7 @@ export function CaseStudies() {
                 />
             </Grid>
             <Box mb="4">
-                <Heading size="4">
+                <Heading size="4" color="crimson">
                     <Flex align="center" justify="center" mb="-4">
                         <LucideGamepad2 />
                         <Text ml="2">{t('caseStudy.gameDev')}</Text>

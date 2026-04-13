@@ -11,11 +11,11 @@ export function Intro() {
 
 
         <Flex direction="column" gap="4" m="4">
-            <Heading size="6">{t("intro.aboutMe")}</Heading>
+            <Heading color="crimson" size="6">{t("intro.aboutMe")}</Heading>
             <Card>
                 <Box m='4'>
                     <Flex direction="column" gap="4">
-                         <Heading size="4" my="0">{t("intro.me")}</Heading>
+                         <Heading size="4"  color="crimson" my="0">{t("intro.me")}</Heading>
                         <Text>{t("intro.about1")}</Text>
                         <Text>{t("intro.about2")}</Text>
                         {/* <Text>{t("intro.about3")}</Text> */}
@@ -26,7 +26,7 @@ export function Intro() {
             <Card>
                 <Box m='4'>
                     <Flex direction="column" gap="4">
-                         <Heading size="4" my="0">{t("intro.drive")}</Heading>
+                         <Heading size="4" color="crimson" my="0">{t("intro.drive")}</Heading>
                         <Text>{t("intro.about5")}</Text>
                         <Text>{t("intro.about6")}</Text>
                         <Text>{t("intro.about7")}</Text>
@@ -38,7 +38,7 @@ export function Intro() {
             <Grid columns={{ initial: "1", md: "2" }} gap="3" width="auto">
                 <Card>
                     <Flex direction="column" gap="4" mx="4" justify="between" height="100%">
-                        <Heading size="4" mb="0" mt="2">{t("intro.architecture")}</Heading>
+                        <Heading size="4" color="crimson" mb="0" mt="2">{t("intro.architecture")}</Heading>
                         <Text>{t("intro.in_1")}</Text>
                         <SidebarNavItem
                             to="/pat"
@@ -50,7 +50,7 @@ export function Intro() {
                 </Card>
                 <Card>
                     <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
-                        <Heading size="4" mb="0" mt="2">{t("intro.video")}</Heading>
+                        <Heading size="4" color="crimson" mb="0" mt="2">{t("intro.video")}</Heading>
                         <Text>{t("intro.in_2")}</Text>
                         <SidebarNavItem
                             to="/video"
@@ -62,7 +62,7 @@ export function Intro() {
                 </Card>
                 <Card>
                     <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
-                        <Heading size="4"  mb="0" mt="2">{t("intro.more")}</Heading>
+                        <Heading size="4"  color="crimson" mb="0" mt="2">{t("intro.more")}</Heading>
                         <Text>{t("intro.in_3")}</Text>
                         <SidebarNavItem
                             to="/caseStudies"
@@ -75,7 +75,7 @@ export function Intro() {
                 <Card>
                   
                     <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%"> 
-                         <Heading size="4"  mb="0" mt="2">{t("intro.qnd")}</Heading>
+                         <Heading size="4"  color="crimson" mb="0" mt="2">{t("intro.qnd")}</Heading>
                         <Text>{t("intro.in_4")}</Text>
                         <SidebarNavItem
                             to="/faq"
@@ -88,7 +88,7 @@ export function Intro() {
                 <Card>
                     
                     <Flex direction="column" gap="4"  mx="4" justify="between"  height="100%">
-                        <Heading size="4"  mb="0" mt="2">{t("intro.brain")}</Heading>
+                        <Heading size="4"  color="crimson" mb="0" mt="2">{t("intro.brain")}</Heading>
                         <Text>{t("intro.in_5")}</Text>
                         <SidebarNavItem
                             to="https://randomindexed.blogspot.com/"

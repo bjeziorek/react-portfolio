@@ -7,11 +7,11 @@ export function PATTests() {
   const { t } = useTranslation()
   return (
     <>
-      <Heading size="6">{t('pat.h_tests')}</Heading>
+      <Heading size="6" color="crimson">{t('pat.h_tests')}</Heading>
       <Text>{t('pat.tests1')}</Text>
       <Text>{t('pat.tests2')}</Text>
 
-      <Heading size="4">{t('pat.h2_tests1')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests1')}</Heading>
       <Text>{t('pat.tests3')}</Text>
 
       <CodeTest title1='toggleSortState.ts' title2='toggleSortState.test.ts'
@@ -87,7 +87,7 @@ describe('toggleSortState', () => {
   });
 });
         `} />
-      <Heading size="4">{t('pat.h2_tests3')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests3')}</Heading>
       <Text>{t('pat.tests4')}</Text>
       <ul>
         <li>{t('pat.list1_tests')}</li>
@@ -99,7 +99,7 @@ describe('toggleSortState', () => {
       <Text>{t('pat.tests5')}</Text>
       <Text>{t('pat.tests6')}</Text>
       <Text>{t('pat.tests7')}</Text>
-      <Heading size="4">{t('pat.h2_tests4')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests4')}</Heading>
       <Text>{t('pat.tests8')}</Text>
       <Text>{t('pat.tests9')}</Text>
       <ul>
@@ -168,7 +168,7 @@ describe('integration of toggle and sort', () => {
 })
 `} />
       </Card>
-      <Heading size="4">{t('pat.h2_tests5')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests5')}</Heading>
       <Text>{t('pat.tests11')}</Text>
       <Text>{t('pat.tests12')}</Text>
       <ul>
@@ -177,7 +177,7 @@ describe('integration of toggle and sort', () => {
         <li>{t('pat.list12_tests')}</li>
         <li>{t('pat.list13_tests')}</li>
       </ul>
-      <Heading size="4">{t('pat.h2_tests')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests')}</Heading>
       <Text>{t('pat.tests13')}</Text>
       <Text>{t('pat.tests14')}</Text>
       <Text>{t('pat.tests15')}</Text>
@@ -354,7 +354,7 @@ describe('TableFull integration tests', () => {
         title1={"TableFull.tsx"}
         title2={"TableFull.rtl.test.tsx"}
       />
-      <Heading size="4">{t('pat.h2_tests2')}</Heading>
+      <Heading size="4" color="crimson">{t('pat.h2_tests2')}</Heading>
       <Text>{t('pat.tests16')}</Text>
       <ul>
         <li>{t('pat.list14_tests')}</li>

@@ -4,7 +4,8 @@
     "faq": "FAQ",
     "caseStudies": "Projects",
     "video": "Studium przypadku: Sudoku (video)",
-    "pat": "Studium przypadku: Probably A Table (npm)"
+    "pat": "Studium przypadku: Probably A Table (npm)",
+    "navigation":"Navigation"
   },
   "universal": {
     "description": "Description",

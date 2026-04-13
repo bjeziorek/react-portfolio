@@ -17,7 +17,7 @@ export function PAT() {
         <Card>
             <Box m="4">
             <Flex direction="column">
-                <Heading>
+                <Heading color="crimson">
                     {t("pat.title")}
                 </Heading>
 
@@ -25,18 +25,18 @@ export function PAT() {
                     {t("pat.intro1")}
                 </Text>
 
-                <Heading size="4" mb="2"> {t("pat.h_context")}</Heading>
+                <Heading size="4" mb="2" color="crimson"> {t("pat.h_context")}</Heading>
 
                 <Text>{t("pat.constext1")}</Text>
                 <Text>{t("pat.constext2")}</Text>
                 <Text>{t("pat.constext3")}</Text>
                 <Text>{t("pat.constext4")}</Text>
 
-                <Heading size="6" mb="-3">
+                <Heading size="6" mb="-3" color="crimson">
                     {t("pat.h_refactor")}
                 </Heading>
 
-                <Heading size="4" mb="2"> {t("pat.h2_refactor")}</Heading>
+                <Heading size="4" mb="2" color="crimson"> {t("pat.h2_refactor")}</Heading>
                 <Text>{t("pat.refactor1")}</Text>
                 <Text>{t("pat.refactor2")}</Text>
                 <ul>

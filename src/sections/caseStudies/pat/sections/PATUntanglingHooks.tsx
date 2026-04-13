@@ -7,7 +7,7 @@ export function PATUntanglingHooks() {
 
     return (
         <>
-            <Heading size="6">{t("pat.h_hooks")}</Heading>
+            <Heading size="6" color="crimson">{t("pat.h_hooks")}</Heading>
             <Text>{t("pat.hooks1")}</Text>
             <Text>{t("pat.hooks2")}</Text>
             <ul>
@@ -19,7 +19,7 @@ export function PATUntanglingHooks() {
             </ul>
             <Text>{t("pat.hooks3")}</Text>
             <Text>{t("pat.hooks4")}</Text>
-            <Heading size="4">{t("pat.h2_hooks1")}</Heading>
+            <Heading size="4" color="crimson">{t("pat.h2_hooks1")}</Heading>
             <Text>{t("pat.hooks5")}</Text>
             <Card mt="4">
                 <Text>Przykład customowego hooka:</Text><pre>useSort.ts</pre>
@@ -55,7 +55,7 @@ export function useSort<Data extends { id: string | number; }>(data: TableData<D
 }
         `}></CodeBlock>
             </Card>
-            <Heading size="4">{t("pat.h2_hooks2")}</Heading>
+            <Heading size="4" color="crimson">{t("pat.h2_hooks2")}</Heading>
             <Text>{t("pat.hooks6")}</Text>
             <Text>{t("pat.hooks7")}</Text>
             <ul>

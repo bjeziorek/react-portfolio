@@ -27,7 +27,7 @@ export function CaseStudy(props: CaseStudyProps) {
         <Card>
             <Flex justify="between" direction="column" height="100%">
             <Box mx="4">
-                <Heading size="4">{t(title)}</Heading>
+                <Heading size="4" color="crimson">{t(title)}</Heading>
                 <Flex gap="5" direction="column" mb="4" >
                     <Text>{t(description)}</Text>
                     <Box>

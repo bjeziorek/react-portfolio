@@ -6,11 +6,11 @@ export function PATTyping() {
     const { t } = useTranslation()
     return (
         <>
-            <Heading size="6">{t('pat.h_types')}</Heading>
+            <Heading size="6" color="crimson">{t('pat.h_types')}</Heading>
             <Text>{t('pat.types1')}</Text>
             <Text>{t('pat.types2')}</Text>
             <Text>{t('pat.types3')}</Text>
-            <Heading size="4">{t('pat.h2_types1')}</Heading>
+            <Heading size="4" color="crimson">{t('pat.h2_types1')}</Heading>
             <Card my='4'>
                 <CodeBlock code={`type TableColumnsColumn<Data> = {
                 id: Extract<keyof Data, string>;
@@ -32,7 +32,7 @@ export function PATTyping() {
                 <li>{t('pat.list2_types')}</li>
             </ul>
             <Text>{t('pat.types6')}</Text>
-            <Heading size="4">{t('pat.h2_types2')}</Heading>
+            <Heading size="4" color="crimson">{t('pat.h2_types2')}</Heading>
             <Card my='4'>
                 <CodeBlock code={`type TableFiltersFilters<Filters> = {
                 [K in keyof Filters]: string;
@@ -48,7 +48,7 @@ export function PATTyping() {
                 <li>{t('pat.list4_types1')}</li>
             </ul>
             <Text>{t('pat.types10')}</Text>
-            <Heading size="4">{t('pat.h2_types3')}</Heading>
+            <Heading size="4" color="crimson">{t('pat.h2_types3')}</Heading>
             <Card my='4'>
                 <CodeBlock code={`interface ProbablyATableProps<Data extends { id: string | number }, Filters> {
                 columns: TableColumnsColumns<Data>;

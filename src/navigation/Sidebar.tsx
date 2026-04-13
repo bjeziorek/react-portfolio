@@ -22,8 +22,9 @@ export default function Sidebar() {
             }}
         >
             <Flex direction="column" gap="3" width="100%">
-                <Heading size="3" mb="2" weight="medium" trim="both">
-                    {t("navigation")}
+                <Heading
+                    color="crimson" size="4" mb="2" weight="medium" trim="both">
+                    {t("menu.navigation")}
                 </Heading>
 
                 <SidebarNavItem

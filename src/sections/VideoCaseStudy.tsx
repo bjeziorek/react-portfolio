@@ -11,11 +11,11 @@ export function VideoCaseStudy() {
         <Card>
             <Box m="4">
             <Flex direction="column" gap="4">
-                <Heading size="6">{t('sudoku.title')}</Heading>
+                <Heading size="6" color="crimson">{t('sudoku.title')}</Heading>
 
                 <Text>{t('sudoku.intro1')}</Text>
                 <Text>{t('sudoku.intro2')}</Text>
-                <Heading size="4">{t('sudoku.h_plan')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_plan')}</Heading>
                 <Text>{t('sudoku.plan1')}</Text>
                 <Flex gap="4" align="center">
                     <Text>{t('universal.plan')}</Text>
@@ -43,7 +43,7 @@ export function VideoCaseStudy() {
                 </Flex>
 
 
-                <Heading size="4">{t('sudoku.h_rowCheck')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_rowCheck')}</Heading>
                 <Text>{t('sudoku.rowCheck1')}</Text>
                 <ul>
                     <li>{t('sudoku.list_rowCheck1')}</li>
@@ -60,7 +60,7 @@ export function VideoCaseStudy() {
                     title={"rowCheck"}
                     url={"https://www.youtube.com/embed/Z_uvgwrmnpM"}
                 />
-                <Heading size="4">{t('sudoku.h_twoVersions')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_twoVersions')}</Heading>
                 <Text>{t('sudoku.twoVersions1')}</Text>
                 <ul>
                     <li>{t('sudoku.list_twoVersions1')}</li>
@@ -73,7 +73,7 @@ export function VideoCaseStudy() {
                     url={"https://www.youtube.com/embed/xI1I1bAxcQE"}
                 />
 
-                <Heading size="4">{t('sudoku.h_implementation')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_implementation')}</Heading>
                 <Text>{t('sudoku.implementation1')}</Text>
                 <Text>{t('sudoku.implementation2')}
                 </Text>
@@ -82,7 +82,7 @@ export function VideoCaseStudy() {
                     url={"https://www.youtube.com/embed/it_YCPOTw8A"}
                 />
 
-                <Heading size="4">{t('sudoku.h_architecture')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_architecture')}</Heading>
 
                 <Text>{t('sudoku.architecture1')}</Text>
 
@@ -102,7 +102,7 @@ export function VideoCaseStudy() {
                     url={"https://www.youtube.com/embed/Tr63YN1mnGg"}
                 />
 
-                <Heading size="4">{t('sudoku.h_colExtractor')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_colExtractor')}</Heading>
 
                 <Text>{t('sudoku.colExtractor1')}</Text>
                 <Text>{t('sudoku.colExtractor2')}</Text>
@@ -117,7 +117,7 @@ export function VideoCaseStudy() {
                     title={"rowCheck"}
                     url={"https://www.youtube.com/embed/_SFri3_WlRk"}
                 />
-                <Heading size="4">{t('sudoku.h_subsquares')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_subsquares')}</Heading>
 
                 <Text>{t('sudoku.subsquares1')}</Text>
                 <Text>{t('sudoku.subsquares2')}</Text>
@@ -126,7 +126,7 @@ export function VideoCaseStudy() {
                     title={"rowCheck"}
                     url={"https://www.youtube.com/embed//bWqES0QviS0"}
                 />
-                <Heading size="4">{t('sudoku.h_subsquaresTests')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_subsquaresTests')}</Heading>
 
                 <Text>{t('sudoku.subsquaresTests1')}</Text>
                 <Text>{t('sudoku.subsquaresTests2')}</Text>
@@ -135,7 +135,7 @@ export function VideoCaseStudy() {
                     title={"rowCheck"}
                     url={"https://www.youtube.com/embed/Vtf8zF3INVs"}
                 />
-                <Heading size="4">{t('sudoku.h_debugging')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_debugging')}</Heading>
 
                 <Text>{t('sudoku.debugging1')}</Text>
                 <Text>{t('sudoku.debugging2')}</Text>
@@ -150,7 +150,7 @@ export function VideoCaseStudy() {
                     title={"rowCheck"}
                     url={"https://www.youtube.com/embed/VTyLtaQsxD0"}
                 />
-                <Heading size="4">{t('sudoku.h_summary')}</Heading>
+                <Heading size="4" color="crimson">{t('sudoku.h_summary')}</Heading>
 
                 <Text>{t('sudoku.summary1')}</Text>
                 <ul>

@@ -5,7 +5,7 @@ export function PATSubcomponentCut() {
     const { t } = useTranslation();
     return (
         <Flex direction="column">
-            <Heading size="6">{t("pat.h_components")}</Heading>
+            <Heading size="6" color="crimson">{t("pat.h_components")}</Heading>
             <Text>{t("pat.components1")}</Text>
             <Text>{t("pat.components2")}</Text>
             <Text>{t("pat.components3")}</Text>
@@ -15,7 +15,7 @@ export function PATSubcomponentCut() {
                 <li>{t("pat.list3_components")}</li>
                 <li>{t("pat.list4_components")}</li>
             </ul>
-            <Heading size="4">{t("pat.h2_components1")}</Heading>
+            <Heading size="4" color="crimson">{t("pat.h2_components1")}</Heading>
 
 
             <figure>
@@ -27,7 +27,7 @@ export function PATSubcomponentCut() {
                     {t("pat.components4")}
                 </figcaption>
             </figure>
-            <Heading size="4">{t("pat.h2_components2")}</Heading>
+            <Heading size="4" color="crimson">{t("pat.h2_components2")}</Heading>
             <Text>{t("pat.components5")}</Text>
 
             <ul>

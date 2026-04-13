@@ -6,7 +6,7 @@ export function PATSkills() {
     const { t } = useTranslation()
     return (
         <Flex direction='column'>
-            <Heading size="6">{t('pat.h_skills')}</Heading>
+            <Heading size="6" color="crimson">{t('pat.h_skills')}</Heading>
             <Text>{t('pat.skills1')}</Text>
             <ul>
                 <li>{t('pat.list1_skills')}</li>
@@ -18,7 +18,7 @@ export function PATSkills() {
                 <li>{t('pat.list7_skills')}</li>
                 <li>{t('pat.list8_skills')}</li>
             </ul>
-            <Heading size="4">{t('pat.h2_skills2')}</Heading>
+            <Heading size="4" color="crimson">{t('pat.h2_skills2')}</Heading>
             <Text>{t('pat.skills2')}</Text>
             <Text>{t('pat.skills3')}</Text>
 
