@@ -68,13 +68,13 @@ export function CaseStudies() {
                             buttonVariant: "outline",
                             isIconBehind: true
                         },
-                        // {
-                        //     isExternal: true,
-                        //     name: "universal.youtube",
-                        //     linkURL: "",
-                        //     buttonVariant: "outline",
-                        //     isIconBehind: true
-                        // }
+                        {
+                            isExternal: true,
+                            name: "universal.youtube",
+                            linkURL: "https://youtu.be/Z6KS_nhfIBY",
+                            buttonVariant: "outline",
+                            isIconBehind: true
+                        }
                     ]}
                 />
             </Grid>
